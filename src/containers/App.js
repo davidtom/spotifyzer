@@ -3,7 +3,7 @@ import {Route} from "react-router-dom"
 import { Redirect } from 'react-router'
 // import {bindActionCreators} from "redux"
 // import {connect} from "react-redux"
-import NavBar from "./components/NavBar/NavBar"
+import NavBar from "../components/NavBar/NavBar"
 import {Button} from "semantic-ui-react"
 
 
