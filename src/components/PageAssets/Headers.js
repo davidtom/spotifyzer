@@ -6,13 +6,9 @@ const SiteHeader = () => (
 )
 
 const PageHeader = (props) => (
-  <Header id="page-header">{props.title}</Header>
+  <Header id="page-header" size="huge">{props.title}</Header>
 )
 
-const SectionHeader = (props) => (
-  <Header id="section-header" size="huge" block onClick={props.onClick}>{props.title}</Header>
-)
 
 export {SiteHeader}
 export {PageHeader}
-export {SectionHeader}

@@ -3,7 +3,8 @@ import {Route} from "react-router-dom"
 import { Redirect } from 'react-router'
 // import {bindActionCreators} from "redux"
 // import {connect} from "react-redux"
-import NavBar from "../components/NavBar/NavBar"
+import NavBar from "../components/NavBar"
+import DashboardPage from "./DashboardPage"
 import {Button} from "semantic-ui-react"
 
 
@@ -17,15 +18,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <Route path="/" component={NavBar} />
         <Route exact path="/login" component={loginPlaceholder} />
         <Route exact path="/login/failure" component={failureAlert} />
-        <Route exact path="/" component={mainPlaceholder} />
+        <Route path="/dashboard" component={DashboardPage} />
       </div>
     );
   }
 }
 
 export default App;
+// Will need this eventually: app will need access to store for user auth
 // export const WrapperApp = connect(mapStateToProps, mapDispatchToProps)(App)

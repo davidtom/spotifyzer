@@ -7,7 +7,7 @@ import {Menu} from 'semantic-ui-react'
 const NavBar = () => {
 
   return (
-    <Menu pointing secondary>
+    <Menu className="site-component" pointing secondary inverted>
       < SiteLogo />
       < SiteHeader />
       <Menu.Menu position='right'>

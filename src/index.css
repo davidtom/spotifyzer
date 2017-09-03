@@ -2,4 +2,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: black;
+  color: white;
+}
+
+div.site-component{
+  background: rgb(40,40,40) !important;
+}
+
+a, div {
+  color: white !important;
 }
