@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {fetchGenres} from "../actions/genresActions"
 import {PageHeader} from '../components/PageAssets/Headers'
 import {DimmerLoader} from '../components/PageAssets/Loaders'
-import {GenresChart} from '../components/Genres/GenresChart'
+import GenreArtistsChart from '../components/Genres/GenreArtistsChart'
 import {Segment} from 'semantic-ui-react'
 
 class GenresShow extends React.Component{
@@ -23,7 +23,7 @@ class GenresShow extends React.Component{
       <Segment basic>
         <PageHeader title={"Number of Artists by Genre"}/>
         {this.displayLoading()}
-        <GenresChart data={{genresList: this.props.genresList, artistsTotal: this.props.artistsTotal}}/>
+        <GenreArtistsChart data={{genresList: this.props.genresList, artistsTotal: this.props.artistsTotal}}/>
       </Segment>
     )
   }

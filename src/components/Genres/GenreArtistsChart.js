@@ -8,7 +8,7 @@ import {Grid} from 'semantic-ui-react'
 // Clean up folders and file names - all, but especially this file and CreateGenreChart
 // Donut chart appending is super weird - fix this; ideally allowing clicking on genres button to re-render chart
 
-class GenresChart extends React.Component{
+class GenreArtistsChart extends React.Component{
   constructor(){
     super()
 
@@ -35,4 +35,4 @@ class GenresChart extends React.Component{
   }
 }
 
-export {GenresChart}
+export default GenreArtistsChart

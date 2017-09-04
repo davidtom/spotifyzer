@@ -4,6 +4,7 @@ import {Route} from "react-router-dom"
 // import {connect} from "react-redux"
 import SiteNavBar from "../components/NavBars/SiteNavBar"
 import DashboardPage from "./DashboardPage"
+import {Grid} from 'semantic-ui-react'
 
 
 
