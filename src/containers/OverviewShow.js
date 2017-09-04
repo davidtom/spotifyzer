@@ -3,6 +3,7 @@ import {bindActionCreators} from "redux"
 import { connect } from 'react-redux';
 import {fetchOverview} from "../actions/overviewActions"
 import {PageHeader} from '../components/PageAssets/Headers'
+import OverviewChart from '../components/Overview/OverviewChart'
 import {DimmerLoader} from '../components/PageAssets/Loaders'
 import {Segment} from 'semantic-ui-react'
 
@@ -22,9 +23,7 @@ class OverviewShow extends React.Component{
       <Segment basic>
         <PageHeader title={"Overview"}/>
         {this.displayLoading()}
-        <p>Tracks: {this.props.data.tracks}</p>
-        <p>Artists: {this.props.data.artists}</p>
-        <p>Genres: {this.props.data.genres}</p>
+        <OverviewChart data={this.props.data}/>
       </Segment>
     )
   }
