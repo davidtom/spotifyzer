@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import {fetchGenres} from "../actions/genresActions"
 import {PageHeader} from '../components/PageAssets/Headers'
 import {DimmerLoader} from '../components/PageAssets/Loaders'
-import {GenresChart} from '../components/GenresChart'
+import {GenresChart} from '../components/Genres/GenresChart'
 import {Segment} from 'semantic-ui-react'
 
-class GenresPage extends React.Component{
+class GenresShow extends React.Component{
 
   componentDidMount(){
     // Only fetch data from API if data does not already exist in store
-    !this.props.data.genresList.length ? this.props.fetchGenres() : null
+    if(!this.props.genresList.length){this.props.fetchGenres()}
   }
 
   displayLoading(){
@@ -21,9 +21,9 @@ class GenresPage extends React.Component{
   render(){
     return (
       <Segment basic>
-        <PageHeader title={"Genres"}/>
+        <PageHeader title={"Number of Artists by Genre"}/>
         {this.displayLoading()}
-        <GenresChart data={this.props.data}/>
+        <GenresChart data={{genresList: this.props.genresList, artistsTotal: this.props.artistsTotal}}/>
       </Segment>
     )
   }
@@ -32,11 +32,9 @@ class GenresPage extends React.Component{
 const mapStateToProps = (state) => {
   return {
     loading: state.genres.loading,
-    data: {
-      genresList: state.genres.genresList,
-      genresTotal: state.genres.genresTotal
+    genresList: state.genres.genresList,
+    artistsTotal: state.genres.artistsTotal
     }
-  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -44,4 +42,4 @@ const mapDispatchToProps = (dispatch) => {
     fetchGenres
   }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(GenresPage)
+export default connect(mapStateToProps, mapDispatchToProps)(GenresShow)

@@ -4,7 +4,7 @@ import {SiteHeader} from '../PageAssets/Headers'
 import {LoginButton} from '../PageAssets/Buttons'
 import {Menu} from 'semantic-ui-react'
 
-const NavBar = () => {
+const SiteNavBar = () => {
 
   return (
     <Menu className="site-component" pointing secondary inverted>
@@ -17,4 +17,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar
+export default SiteNavBar

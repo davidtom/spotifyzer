@@ -6,6 +6,10 @@ body {
   color: white;
 }
 
+a#site-header{
+  font-size: 5em;
+}
+
 div.site-component{
   background: rgb(40,40,40) !important;
 }

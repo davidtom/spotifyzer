@@ -7,9 +7,7 @@ function fetchGenres(){
     .then(resp => resp.json())
     .then(json => dispatch({
       type:"FETCH_GENRES",
-      payload: {
-        genres: json.artists_by_genre,
-        total: json.artist_genres_total[0]["total"]}
+      payload: {genres: json.artists_by_genre, artistsTotal: json.total_artists}
       })
     )
   }
