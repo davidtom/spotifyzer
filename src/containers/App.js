@@ -17,15 +17,31 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <Grid centered>
+        <Grid.Row>
+        <Grid.Column stretched>
         <Route path="/" component={SiteNavBar} />
+        </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column width={15}>
         <Route exact path="/login" component={loginPlaceholder} />
         <Route exact path="/login/failure" component={failureAlert} />
         <Route path="/dashboard" component={DashboardPage} />
-      </div>
+        </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }
+
+// <div>
+//   <Route path="/" component={SiteNavBar} />
+//   <Route exact path="/login" component={loginPlaceholder} />
+//   <Route exact path="/login/failure" component={failureAlert} />
+//   <Route path="/dashboard" component={DashboardPage} />
+// </div>
 
 export default App;
 // Will need this eventually: app will need access to store for user auth
