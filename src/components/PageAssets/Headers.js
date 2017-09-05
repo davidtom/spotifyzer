@@ -10,7 +10,7 @@ const PageHeader = (props) => (
 )
 
 const SectionHeader = (props) => (
-  <Header class="section-header" size="large">{props.title}</Header>
+  <Header className="section-header" size="large">{props.title}</Header>
 )
 
 const ArtistHeader = (props) => (

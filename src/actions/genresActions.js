@@ -13,4 +13,9 @@ function fetchGenres(){
   }
 }
 
+function selectGenreArtists(artists){
+  return {type: "SELECT_GENRE_ARTISTS", payload: artists}
+}
+
 export {fetchGenres}
+export {selectGenreArtists}

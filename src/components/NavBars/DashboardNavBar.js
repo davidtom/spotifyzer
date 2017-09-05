@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import {DashboardButton} from '../PageAssets/Buttons'
-import {Button} from 'semantic-ui-react'
 
 const DashboardNavBar = ({mainUrl}) => {
   return (

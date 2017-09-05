@@ -3,6 +3,18 @@ import {Table} from 'semantic-ui-react'
 
 const OverviewChart = ({data}) => {
   // TODO: make this more personal - its the user's data
+  // TODO:
+  // TODO:
+  // TODO: Provide genre descpriptions from an api (musicgenomeproject?)
+  // TODO: Move this toward being a favorite playlist building app based on analytics?
+  // TODO:
+  // TODO:
+  // TODO:
+
+
+
+
+
   return (
     <Table celled padded collapsing inverted selectable>
 

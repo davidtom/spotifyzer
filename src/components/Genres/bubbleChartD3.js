@@ -15,6 +15,7 @@ export default function renderChart({genresList, artistsTotal}, handleClick){
   // Remove any and all children of the div that will hold the chart
   // Necessary because this chart is created/appended in a component.render()
   const containerNode = document.getElementById("data-container")
+
   if (containerNode){
     while (containerNode.firstChild) {
       containerNode.removeChild(containerNode.firstChild);
