@@ -13,9 +13,8 @@ const ArtistsList = ({ artists }) => {
     <Divider hidden fitted/>
     </div>
   );
-  console.log(EmptySelectionInstruction)
   return (
-    <div>
+    <div id="artists-list-container">
       {renderArtists.length ? renderArtists : <EmptySelectionInstruction/>}
     </div>
   );
