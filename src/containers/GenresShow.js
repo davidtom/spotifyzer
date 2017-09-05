@@ -21,7 +21,6 @@ class GenresShow extends React.Component{
   render(){
     return (
       <Segment basic>
-        <PageHeader title={"Number of Artists by Genre"}/>
         {this.displayLoading()}
         <GenreArtistsChart data={{genresList: this.props.genresList, artistsTotal: this.props.artistsTotal}}/>
       </Segment>
