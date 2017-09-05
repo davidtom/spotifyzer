@@ -18,19 +18,21 @@ class App extends React.Component {
   render() {
     return (
       <Grid centered>
+
         <Grid.Row>
-        <Grid.Column stretched>
-        <Route path="/" component={SiteNavBar} />
-        </Grid.Column>
+          <Grid.Column stretched>
+            <Route path="/" component={SiteNavBar} />
+          </Grid.Column>
         </Grid.Row>
 
         <Grid.Row>
           <Grid.Column width={15}>
-        <Route exact path="/login" component={loginPlaceholder} />
-        <Route exact path="/login/failure" component={failureAlert} />
-        <Route path="/dashboard" component={DashboardPage} />
-        </Grid.Column>
+            <Route exact path="/login" component={loginPlaceholder} />
+            <Route exact path="/login/failure" component={failureAlert} />
+            <Route path="/dashboard" component={DashboardPage} />
+          </Grid.Column>
         </Grid.Row>
+
       </Grid>
     );
   }

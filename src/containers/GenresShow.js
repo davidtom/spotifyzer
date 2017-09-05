@@ -53,7 +53,7 @@ class GenresShow extends React.Component{
       <Grid columns={2}>
       <Grid.Column textAlign={"center"}>
         <SectionHeader title={"Genres"}/>
-        <div id='data-container'></div>
+        <div id='data-container'/>
         <DimmerLoader status={this.props.loading}/>
       </Grid.Column>
       <Grid.Column textAlign={"center"} width={6} floated={"right"}>
