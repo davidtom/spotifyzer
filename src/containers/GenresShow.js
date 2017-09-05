@@ -5,7 +5,7 @@ import {fetchGenres, selectGenre} from "../actions/genresActions"
 import {SectionHeader} from '../components/PageAssets/Headers'
 import {DimmerLoader} from '../components/PageAssets/Loaders'
 import renderChart from '../components/Genres/bubbleChartD3'
-import ArtistsList from '../components/Artists/ArtistsList'
+import GenreArtistsList from '../components/Genres/GenreArtistsList'
 
 import {Grid} from 'semantic-ui-react'
 
@@ -58,7 +58,7 @@ class GenresShow extends React.Component{
       </Grid.Column>
       <Grid.Column textAlign={"center"} width={6} floated={"right"}>
         <SectionHeader title={this.formatArtistTitle()}/>
-        <ArtistsList artists={this.props.selection.artists}/>
+        <GenreArtistsList artists={this.props.selection.artists}/>
       </Grid.Column>
       </Grid>
     )

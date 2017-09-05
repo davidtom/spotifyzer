@@ -18,6 +18,11 @@ a, div {
   color: white !important;
 }
 
+a:hover {
+  color: rgb(13, 188, 61) !important;
+}
+
 table {
   margin: 0 auto !important;
+  font-size: 1.5em !important;
 }

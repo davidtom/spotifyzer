@@ -17,8 +17,21 @@ const ArtistHeader = (props) => (
   <Header size="large">{props.name}</Header>
 )
 
+const TrackHeader = (props) => (
+  <div>
+  <Header size="large">{props.name}</Header>
+  <Header size="medium">{props.artists} - {props.album}</Header>
+  </div>
+)
+
+const PositionHeader = (props) => (
+  <Header size="large">{props.position}</Header>
+)
+
 
 export {SiteHeader}
 export {PageHeader}
 export {SectionHeader}
 export {ArtistHeader}
+export {TrackHeader}
+export {PositionHeader}

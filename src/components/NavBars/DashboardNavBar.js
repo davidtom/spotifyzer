@@ -7,8 +7,8 @@ const DashboardNavBar = ({mainUrl}) => {
     <div>
       <NavLink to={`${mainUrl}`}><DashboardButton text={"Overview"}/></NavLink>
       <NavLink to={`${mainUrl}/genres`}><DashboardButton text={"Genres"}/></NavLink>
-      <DashboardButton text={"Top Artists"}/>
-      <DashboardButton text={"Top Tracks"}/>
+      <NavLink to={`${mainUrl}/artists`}><DashboardButton text={"Top Artists"}/></NavLink>
+      <NavLink to={`${mainUrl}/tracks`}><DashboardButton text={"Top Tracks"}/></NavLink>
     </div>
   );
 };
