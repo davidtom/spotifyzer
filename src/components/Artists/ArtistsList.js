@@ -1,5 +1,6 @@
 import React from 'react';
 import Artist from './Artist'
+import EmptySelectionInstruction from './EmptySelectionInstruction'
 import {Divider} from 'semantic-ui-react'
 
 const ArtistsList = ({ artists }) => {
@@ -12,10 +13,10 @@ const ArtistsList = ({ artists }) => {
     <Divider hidden fitted/>
     </div>
   );
-
+  console.log(EmptySelectionInstruction)
   return (
     <div>
-      {renderArtists}
+      {renderArtists.length ? renderArtists : <EmptySelectionInstruction/>}
     </div>
   );
 };

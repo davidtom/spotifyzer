@@ -17,3 +17,7 @@ div.site-component{
 a, div {
   color: white !important;
 }
+
+table {
+  margin: 0 auto !important;
+}

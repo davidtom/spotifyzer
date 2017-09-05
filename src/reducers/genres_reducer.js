@@ -1,4 +1,12 @@
-export default (state={loading: false, genresList:[], artistsTotal: null, selectedArtists: []}, action) => {
+export default (state={
+  loading: false,
+  genresList:[],
+  artistsTotal: null,
+  selection: {
+    genre: null,
+    artists: []
+    }
+  }, action) => {
   switch(action.type){
     case ("LOADING_GENRES"):
       return Object.assign({}, state, {loading: true})
@@ -6,8 +14,8 @@ export default (state={loading: false, genresList:[], artistsTotal: null, select
       return Object.assign({}, state, {loading: false,
                                       genresList: action.payload.genres,
                                       artistsTotal: action.payload.artistsTotal})
-    case ("SELECT_GENRE_ARTISTS"):
-      return Object.assign({}, state, {selectedArtists: action.payload})
+    case ("SELECT_GENRE"):
+      return Object.assign({}, state, {selection: {genre: action.payload.name, artists: action.payload.artists}})
     default:
       return state
   }

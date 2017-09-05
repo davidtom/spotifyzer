@@ -1,7 +1,7 @@
 import React from "react";
 import {bindActionCreators} from "redux"
 import { connect } from 'react-redux';
-import {fetchGenres, selectGenreArtists} from "../actions/genresActions"
+import {fetchGenres, selectGenre} from "../actions/genresActions"
 import {SectionHeader} from '../components/PageAssets/Headers'
 import {DimmerLoader} from '../components/PageAssets/Loaders'
 import renderChart from '../components/Genres/bubbleChartD3'
@@ -11,8 +11,8 @@ import {Grid} from 'semantic-ui-react'
 
 class GenresShow extends React.Component{
 
-  handleClick = (artists) => {
-    this.props.selectGenreArtists(artists)
+  handleClick = (data) => {
+    this.props.selectGenre(data)
   }
 
   componentDidMount(){
@@ -34,22 +34,31 @@ class GenresShow extends React.Component{
     }
   }
 
-  displayLoading(){
-    return this.props.loading && <DimmerLoader/>
+  formatArtistTitle(){
+    const genre = this.props.selection.genre
+
+    function toTitleCase(str){
+      return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    }
+
+    if (!genre){
+      return "Artists"
+    } else {
+      return `${toTitleCase(genre)} Artists`
+    }
   }
 
   render(){
-    //TODO: refactor dimmer/loader so its a component, with a variable prop
     return (
       <Grid columns={2}>
-      {this.displayLoading()}
       <Grid.Column textAlign={"center"}>
         <SectionHeader title={"Genres"}/>
         <div id='data-container'></div>
+        <DimmerLoader status={this.props.loading}/>
       </Grid.Column>
       <Grid.Column textAlign={"center"} width={6} floated={"right"}>
-        <SectionHeader title={"Artists"}/>
-        <ArtistsList artists={this.props.selectedArtists}/>
+        <SectionHeader title={this.formatArtistTitle()}/>
+        <ArtistsList artists={this.props.selection.artists}/>
       </Grid.Column>
       </Grid>
     )
@@ -61,14 +70,14 @@ const mapStateToProps = (state) => {
     loading: state.genres.loading,
     genresList: state.genres.genresList,
     artistsTotal: state.genres.artistsTotal,
-    selectedArtists: state.genres.selectedArtists
+    selection: state.genres.selection
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchGenres,
-    selectGenreArtists
+    selectGenre
   }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(GenresShow)

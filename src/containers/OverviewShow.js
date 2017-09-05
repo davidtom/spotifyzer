@@ -5,7 +5,7 @@ import {fetchOverview} from "../actions/overviewActions"
 import {PageHeader} from '../components/PageAssets/Headers'
 import OverviewChart from '../components/Overview/OverviewChart'
 import {DimmerLoader} from '../components/PageAssets/Loaders'
-import {Segment} from 'semantic-ui-react'
+import {Container, Divider} from 'semantic-ui-react'
 
 class OverviewShow extends React.Component{
 
@@ -14,17 +14,13 @@ class OverviewShow extends React.Component{
     if(!this.props.data.tracks){this.props.fetchOverview()}
   }
 
-  displayLoading(){
-    return this.props.loading && <DimmerLoader/>
-  }
-
   render(){
     return (
-      <Segment basic>
-        <PageHeader title={"Overview"}/>
-        {this.displayLoading()}
+      <Container textAlign={"center"}>
+        <Divider hidden/>
+        <DimmerLoader status={this.props.loading}/>
         <OverviewChart data={this.props.data}/>
-      </Segment>
+      </Container>
     )
   }
 }

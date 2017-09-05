@@ -3,25 +3,17 @@ import {Table} from 'semantic-ui-react'
 
 const OverviewChart = ({data}) => {
   // TODO: make this more personal - its the user's data
-  // TODO:
-  // TODO:
-  // TODO: Provide genre descpriptions from an api (musicgenomeproject?)
-  // TODO: Move this toward being a favorite playlist building app based on analytics?
-  // TODO:
-  // TODO:
-  // TODO:
 
 
 
 
 
   return (
-    <Table celled padded collapsing inverted selectable>
+    <Table celled padded collapsing inverted selectable color="black">
 
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Type</Table.HeaderCell>
-          <Table.HeaderCell>Count</Table.HeaderCell>
+          <Table.HeaderCell colSpan='3'>Your Saved Music:</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
 

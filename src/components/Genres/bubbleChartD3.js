@@ -109,6 +109,6 @@ export default function renderChart({genresList, artistsTotal}, handleClick){
       return tooltip.style("visibility", "hidden");
     })
     .on("click", function(d){
-      handleClick(d["artists"])
+      handleClick(d)
     });
 }
