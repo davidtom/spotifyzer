@@ -10,7 +10,7 @@ import TracksShow from "./TracksShow"
 import {Segment} from 'semantic-ui-react'
 
 const DashboardPage = ({match}) => {
-  console.log(match)
+
   return (
     <Segment className="site-component" textAlign="center">
       <DashboardNavBar mainUrl={match.url}/>

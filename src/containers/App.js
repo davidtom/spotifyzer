@@ -4,7 +4,8 @@ import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import SiteNavBar from "../components/NavBars/SiteNavBar"
 import {currentUser} from "../actions/authActions"
-import AuthSwitch from "../auth/AuthSwitch"
+import AuthSwitch from '../auth/AuthSwitch'
+import withAuthorization from '../auth/AuthHOC'
 import DashboardPage from "./DashboardPage"
 import {Grid} from 'semantic-ui-react'
 
@@ -48,9 +49,11 @@ class App extends React.Component {
 }
 
 // <Route path ='/dashboard' render={(props)=>(
-//     this.props.auth.isLoggedIn ? < DashboardPage {...props}/> : props.history.push("/login")
-// )} />
+//     withAuthorization(DashboardPage, props)
+//   )} />
 
+
+// <Route path="/dashboard" component={DashboardPage} />
 
 
 const mapStateToProps = (state) => {
