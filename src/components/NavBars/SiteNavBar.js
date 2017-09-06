@@ -1,10 +1,13 @@
 import React from 'react'
 import {SiteLogo} from '../PageAssets/Images'
 import {SiteHeader} from '../PageAssets/Headers'
-import {LoginButton} from '../PageAssets/Buttons'
+import {LoginButton, LogoutButton} from '../PageAssets/Buttons'
 import {Menu} from 'semantic-ui-react'
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import {logoutUser} from "../../actions/authActions"
 
-const SiteNavBar = () => {
+const SiteNavBar = ({logoutUser}) => {
 
   return (
     <Menu className="site-component" pointing secondary inverted>
@@ -12,9 +15,18 @@ const SiteNavBar = () => {
       < SiteHeader />
       <Menu.Menu position='right'>
         <div>< LoginButton /></div>
+        <div>< LogoutButton handleClick={logoutUser} /></div>
       </Menu.Menu>
     </Menu>
   );
 };
 
-export default SiteNavBar
+// export default SiteNavBar
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    logoutUser
+  }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(SiteNavBar)

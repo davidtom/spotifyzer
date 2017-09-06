@@ -3,6 +3,7 @@ import {Route} from "react-router-dom"
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import SiteNavBar from "../components/NavBars/SiteNavBar"
+import {currentUser} from "../actions/authActions"
 import AuthSwitch from "../Auth/AuthSwitch"
 import DashboardPage from "./DashboardPage"
 import {Grid} from 'semantic-ui-react'
@@ -16,8 +17,13 @@ const failureAlert = () => {return <h1>Error with login - please try again</h1>}
 
 class App extends React.Component {
 
+  componentWillMount(){
+    if (localStorage.getItem('jwt')) {
+      this.props.currentUser()
+    }
+  }
+
   render() {
-    console.log(this.props)
     return (
       <Grid centered>
 
@@ -49,8 +55,14 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.user.auth
+    auth: state.auth
     }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    currentUser
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

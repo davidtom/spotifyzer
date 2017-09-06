@@ -1,7 +1,7 @@
 import React from "react";
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import {fetchUser} from "../actions/userActions"
+import {fetchAuthorization} from "../actions/authActions"
 
 class AuthSwitch extends React.Component{
 
@@ -10,11 +10,9 @@ class AuthSwitch extends React.Component{
     const type = response.split("=")[0]
     const value = response.split("=")[1]
     if (type === "code"){
-      this.props.fetchUser(value, this.props.history.push("/dashboard"))
-      // fetch(`http://localhost:3000/api/v1/login_callback?code=${value}`)
-      // .then(resp => resp.json())
-      // .then(json => console.log(json))
-      // .then(this.props.history.push("/dashboard"))
+      this.props.fetchAuthorization(value)
+      // once store has been updated, redirect user to /dashboard
+      .then(this.props.history.push("/dashboard"))
     } else {
       // Eventually just push back to /, but with an alert (from store)
       this.props.history.push("/login/failure")
@@ -26,10 +24,9 @@ class AuthSwitch extends React.Component{
   }
 }
 
-
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchUser
+    fetchAuthorization
   }, dispatch)
 }
 export default connect(null, mapDispatchToProps)(AuthSwitch)

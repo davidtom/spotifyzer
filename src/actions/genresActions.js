@@ -1,9 +1,10 @@
 import {ApiUrl} from "../components/PageAssets/ApiUrl"
+import {headers} from '../Auth/AuthFunctions'
 
 function fetchGenres(){
   return (dispatch) => {
     dispatch({type: "LOADING_GENRES"})
-    return fetch(`${ApiUrl}genres`)
+    return fetch(`${ApiUrl}genres`, {headers: headers()})
     .then(resp => resp.json())
     .then(json => dispatch({
       type:"FETCH_GENRES",

@@ -1,4 +1,5 @@
 import {ApiUrl} from "../components/PageAssets/ApiUrl"
+import {headers} from '../Auth/AuthFunctions'
 
 function fetchTopTracks(){
   return (dispatch) => {
