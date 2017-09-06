@@ -1,7 +1,7 @@
 import {ApiUrl} from "../components/PageAssets/ApiUrl"
 import {headers} from '../auth/AuthFunctions'
 
-function fetchTopArtists(){
+export function fetchTopArtists(){
   return (dispatch) => {
     dispatch({type: "LOADING_TOP_ARTISTS"})
     return fetch(`${ApiUrl}artists/top`, {headers: headers()})
@@ -13,5 +13,3 @@ function fetchTopArtists(){
     )
   }
 }
-
-export {fetchTopArtists}

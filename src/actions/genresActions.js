@@ -1,7 +1,7 @@
 import {ApiUrl} from "../components/PageAssets/ApiUrl"
 import {headers} from '../auth/AuthFunctions'
 
-function fetchGenres(){
+export function fetchGenres(){
   return (dispatch) => {
     dispatch({type: "LOADING_GENRES"})
     return fetch(`${ApiUrl}genres`, {headers: headers()})
@@ -14,9 +14,6 @@ function fetchGenres(){
   }
 }
 
-function selectGenre(data){
+export function selectGenre(data){
   return {type: "SELECT_GENRE", payload: data}
 }
-
-export {fetchGenres}
-export {selectGenre}

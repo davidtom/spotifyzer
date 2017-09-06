@@ -1,7 +1,7 @@
 import {ApiUrl} from "../components/PageAssets/ApiUrl"
 import {headers} from '../auth/AuthFunctions'
 
-function fetchOverview(){
+export function fetchOverview(){
   return (dispatch) => {
     dispatch({type: "LOADING_OVERVIEW"})
     return fetch(`${ApiUrl}library`, {headers: headers()})
@@ -16,5 +16,3 @@ function fetchOverview(){
     )
   }
 }
-
-export {fetchOverview}

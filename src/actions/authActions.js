@@ -1,7 +1,7 @@
 import {ApiUrl} from "../components/PageAssets/ApiUrl"
 import {headers} from '../auth/AuthFunctions'
 
-function fetchAuthorization(code){
+export function fetchAuthorization(code){
   return (dispatch) => {
     dispatch({type: "LOADING_AUTHORIZATION"})
     return fetch(`${ApiUrl}users?code=${code}`, {
@@ -18,7 +18,7 @@ function fetchAuthorization(code){
   }
 }
 
-function currentUser(){
+export function currentUser(){
   return (dispatch) => {
     dispatch({type: "LOADING_AUTHORIZATION"})
     return fetch(`${ApiUrl}auth`, {headers: headers()})
@@ -31,10 +31,6 @@ function currentUser(){
   }
 }
 
-function logoutUser(){
+export function logoutUser(){
   return {type: "LOGOUT_USER"}
 }
-
-export {fetchAuthorization}
-export {currentUser}
-export {logoutUser}
