@@ -1,8 +1,9 @@
 import React from 'react';
 import {Route} from "react-router-dom"
-// import {bindActionCreators} from "redux"
-// import {connect} from "react-redux"
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
 import SiteNavBar from "../components/NavBars/SiteNavBar"
+import AuthSwitch from "../Auth/AuthSwitch"
 import DashboardPage from "./DashboardPage"
 import {Grid} from 'semantic-ui-react'
 
@@ -16,6 +17,7 @@ const failureAlert = () => {return <h1>Error with login - please try again</h1>}
 class App extends React.Component {
 
   render() {
+    console.log(this.props)
     return (
       <Grid centered>
 
@@ -28,6 +30,7 @@ class App extends React.Component {
         <Grid.Row>
           <Grid.Column width={15}>
             <Route exact path="/login" component={loginPlaceholder} />
+            <Route exact path="/authorized" component={AuthSwitch} />
             <Route exact path="/login/failure" component={failureAlert} />
             <Route path="/dashboard" component={DashboardPage} />
           </Grid.Column>
@@ -38,6 +41,16 @@ class App extends React.Component {
   }
 }
 
-export default App;
-// Will need this eventually: app will need access to store for user auth
-// export const WrapperApp = connect(mapStateToProps, mapDispatchToProps)(App)
+// <Route path ='/dashboard' render={(props)=>(
+//     this.props.auth.isLoggedIn ? < DashboardPage {...props}/> : props.history.push("/login")
+// )} />
+
+
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.user.auth
+    }
+}
+
+export default connect(mapStateToProps)(App)
