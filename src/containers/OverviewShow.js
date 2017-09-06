@@ -8,9 +8,13 @@ import {Container, Divider} from 'semantic-ui-react'
 
 class OverviewShow extends React.Component{
 
-  componentDidMount(){
-    // Only fetch data from API if data does not already exist in store
-    if(!this.props.data.tracks){this.props.fetchOverview()}
+  componentWillReceiveProps(nextProps){
+    // wait for authorization to complete (and jwt token to be saved) before
+    // fetching data
+    // NOTE: should I use this same paradigm for other pages?
+    if (!this.props.auth.isLoggedIn && nextProps.auth.isLoggedIn){
+      this.props.fetchOverview()
+    }
   }
 
   render(){
@@ -31,7 +35,8 @@ const mapStateToProps = (state) => {
       tracks: state.overview.tracks,
       artists: state.overview.artists,
       genres: state.overview.genres
-    }
+    },
+    auth: state.auth
   }
 }
 
