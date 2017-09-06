@@ -9,16 +9,19 @@ import ArtistsShow from "./ArtistsShow"
 import TracksShow from "./TracksShow"
 import {Segment} from 'semantic-ui-react'
 
-const DashboardPage = ({match}) =>
-  <Segment className="site-component" textAlign="center">
-    <DashboardNavBar mainUrl={match.url}/>
-    <Switch>
-    <Route exact path={match.url} component={OverviewShow}/>
-    <Route path={`${match.url}/genres`} component={GenresShow} />
-    <Route path={`${match.url}/artists`} component={ArtistsShow} />
-    <Route path={`${match.url}/tracks`} component={TracksShow} />
-    </Switch>
-  </Segment>;
-;
+const DashboardPage = ({match}) => {
+  console.log(match)
+  return (
+    <Segment className="site-component" textAlign="center">
+      <DashboardNavBar mainUrl={match.url}/>
+      <Switch>
+      <Route exact path={match.url} component={OverviewShow}/>
+      <Route path={`${match.url}/genres`} component={GenresShow} />
+      <Route path={`${match.url}/artists`} component={ArtistsShow} />
+      <Route path={`${match.url}/tracks`} component={TracksShow} />
+      </Switch>
+    </Segment>
+  )
+}
 
 export default DashboardPage

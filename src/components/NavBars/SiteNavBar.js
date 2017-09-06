@@ -21,8 +21,8 @@ const SiteNavBar = ({logoutUser}) => {
   );
 };
 
-// export default SiteNavBar
 
+// Connect to state so that logout button can dispatch an action to logout user
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     logoutUser
