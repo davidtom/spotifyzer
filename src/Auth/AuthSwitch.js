@@ -6,15 +6,15 @@ import {fetchAuthorization} from "../actions/authActions"
 class AuthSwitch extends React.Component{
 
   componentWillMount(){
-    const response = window.location.href.split("?")[1]
-    const type = response.split("=")[0]
-    const value = response.split("=")[1]
-    if (type === "code"){
-      this.props.fetchAuthorization(value)
-      // once store has been updated, redirect user to /dashboard
+    // save url queryString and check if it contains a code or not
+    // if so, send to api and redirect to dashboard; if not show error
+    const queryString = this.props.location.search
+    if (queryString.includes("code")){
+      const code = queryString.split("=")[1]
+      this.props.fetchAuthorization(code)
       .then(this.props.history.push("/dashboard"))
     } else {
-      // Eventually just push back to /, but with an alert (from store)
+      // NOTE: Eventually just push back to /, but with an alert (from store)
       this.props.history.push("/login/failure")
     }
   }

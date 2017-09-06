@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import SiteNavBar from "../components/NavBars/SiteNavBar"
 import {currentUser} from "../actions/authActions"
-import AuthSwitch from "../Auth/AuthSwitch"
+import AuthSwitch from "../auth/AuthSwitch"
 import DashboardPage from "./DashboardPage"
 import {Grid} from 'semantic-ui-react'
 

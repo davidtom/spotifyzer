@@ -1,5 +1,5 @@
 import {ApiUrl} from "../components/PageAssets/ApiUrl"
-import {headers} from '../Auth/AuthFunctions'
+import {headers} from '../auth/AuthFunctions'
 
 function fetchGenres(){
   return (dispatch) => {
