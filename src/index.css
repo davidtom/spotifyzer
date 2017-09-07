@@ -22,6 +22,18 @@ a:hover {
   color: rgb(13, 188, 61) !important;
 }
 
+a.log-in-out:hover {
+  color: rgb(0, 0, 0) !important;
+}
+
+span.profile-name {
+  font-size: 1.5em;
+}
+
+div.menu {
+  font-size: 1.5em;
+}
+
 table {
   margin: 0 auto !important;
   font-size: 1.5em !important;
