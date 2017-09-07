@@ -7,6 +7,7 @@ import {currentUser} from "../actions/authActions"
 import AuthSwitch from '../auth/AuthSwitch'
 import withAuthorization from '../auth/AuthHOC'
 import DashboardPage from "./DashboardPage"
+import {failedLoginMessage} from '../components/PageAssets/Messages'
 import {Grid} from 'semantic-ui-react'
 
 
@@ -25,6 +26,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props.auth.error)
     return (
       <Grid centered>
 
@@ -36,6 +38,7 @@ class App extends React.Component {
 
         <Grid.Row>
           <Grid.Column width={15}>
+            < failedLoginMessage />
             <Route exact path="/login" component={loginPlaceholder} />
             <Route exact path="/authorized" component={AuthSwitch} />
             <Route exact path="/login/failure" component={failureAlert} />

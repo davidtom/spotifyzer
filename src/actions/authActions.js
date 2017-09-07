@@ -18,6 +18,10 @@ export function fetchAuthorization(code){
   }
 }
 
+export function failAuthorization(){
+  return {type: "FAIL_AUTHORIZATION"}
+}
+
 export function currentUser(){
   return (dispatch) => {
     dispatch({type: "LOADING_AUTHORIZATION"})

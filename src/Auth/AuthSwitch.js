@@ -1,7 +1,7 @@
 import React from "react";
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import {fetchAuthorization} from "../actions/authActions"
+import {fetchAuthorization, failAuthorization} from "../actions/authActions"
 
 class AuthSwitch extends React.Component{
 
@@ -14,19 +14,21 @@ class AuthSwitch extends React.Component{
       this.props.fetchAuthorization(code)
       .then(this.props.history.push("/dashboard"))
     } else {
-      // NOTE: Eventually just push back to /, but with an alert (from store)
-      this.props.history.push("/login/failure")
+      this.props.failAuthorization()
+      this.props.history.push("/")
     }
   }
-
   render(){
-    return (<p>You shouldnt see this!</p>)
+    return (
+      <div></div>
+    )
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchAuthorization
+    fetchAuthorization,
+    failAuthorization
   }, dispatch)
 }
 export default connect(null, mapDispatchToProps)(AuthSwitch)
