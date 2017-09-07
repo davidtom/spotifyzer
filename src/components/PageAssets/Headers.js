@@ -2,7 +2,7 @@ import React from "react"
 import { Header } from 'semantic-ui-react'
 
 export const SiteHeader = () => (
-  <Header id="site-header" size="huge" as="a" href="/">Spotifyzer</Header>
+  <Header id="site-header" size="huge">Spotifyzer</Header>
 )
 
 export const PageHeader = (props) => (

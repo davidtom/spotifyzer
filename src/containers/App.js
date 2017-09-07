@@ -23,7 +23,7 @@ class App extends React.Component {
 
         <Grid.Row>
           <Grid.Column stretched>
-            <Route path="/" component={SiteNavBar} />
+            <Route path="/" render={(props) => <SiteNavBar {...props}/>} />
           </Grid.Column>
         </Grid.Row>
 
