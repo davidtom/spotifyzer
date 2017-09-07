@@ -13,11 +13,11 @@ const DashboardPage = ({match}) => {
     <Segment className="site-component" textAlign="center">
       <DashboardNavBar mainUrl={match.url}/>
       <Switch>
-      <Route path={`${match.url}/`} component={WelcomeMessage}/>
-      <Route path={`${match.url}overview`} component={OverviewShow}/>
-      <Route path={`${match.url}genres`} component={GenresShow} />
-      <Route path={`${match.url}artists`} component={ArtistsShow} />
-      <Route path={`${match.url}tracks`} component={TracksShow} />
+        <Route path={`${match.url}/`} component={WelcomeMessage}/>
+        <Route path={`${match.url}overview`} component={OverviewShow}/>
+        <Route path={`${match.url}genres`} component={GenresShow} />
+        <Route path={`${match.url}artists`} component={ArtistsShow} />
+        <Route path={`${match.url}tracks`} component={TracksShow} />
       </Switch>
     </Segment>
   )

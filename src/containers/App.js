@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from "react-router"
 import {Route} from "react-router-dom"
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
@@ -6,7 +7,6 @@ import SiteNavBar from "../components/NavBars/SiteNavBar"
 import {currentUser} from "../actions/authActions"
 import AuthSwitch from '../auth/AuthSwitch'
 import DashboardPage from "./DashboardPage"
-import {failedLoginMessage} from '../components/PageAssets/Messages'
 import {Grid} from 'semantic-ui-react'
 
 class App extends React.Component {
@@ -29,10 +29,9 @@ class App extends React.Component {
 
         <Grid.Row>
           <Grid.Column width={15}>
-            < failedLoginMessage />
             <Route exact path="/authorized" component={AuthSwitch} />
             <Route path="/" render={(props) => {
-                return this.props.auth.isLoggedIn ? <DashboardPage {...props}/> : <loginPlaceholder/>
+                return this.props.auth.isLoggedIn ? <DashboardPage {...props}/> : <Redirect to={'/'} />
               }} />
           </Grid.Column>
         </Grid.Row>

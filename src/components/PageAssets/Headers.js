@@ -5,12 +5,12 @@ export const SiteHeader = () => (
   <Header id="site-header" size="huge">Spotifyzer</Header>
 )
 
-export const PageHeader = (props) => (
-  <Header id="page-header" size="huge">{props.title}</Header>
+export const SectionHeader = (props) => (
+  <Header size="large">{props.title}</Header>
 )
 
-export const SectionHeader = (props) => (
-  <Header className="section-header" size="large">{props.title}</Header>
+export const PageHeader = (props) => (
+  <Header size="large">{props.title}</Header>
 )
 
 export const ArtistHeader = (props) => (

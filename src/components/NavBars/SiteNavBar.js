@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import {SiteLogo} from '../PageAssets/Images'
 import {SiteHeader} from '../PageAssets/Headers'
 import {LoginButton, ProfileDropdown} from '../PageAssets/Buttons'
-import {Menu} from 'semantic-ui-react'
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import {logoutUser} from "../../actions/authActions"
+import {Menu} from 'semantic-ui-react'
 
 const SiteNavBar = (props) => {
 

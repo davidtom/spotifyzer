@@ -10,16 +10,16 @@ body {
   font-size: 5em;
 }
 
+#site-header:hover {
+  color: rgb(13, 188, 61) !important;
+}
+
 div.site-component{
   background: rgb(40,40,40) !important;
 }
 
 a, div {
   color: white !important;
-}
-
-a:hover {
-  color: rgb(13, 188, 61) !important;
 }
 
 a.log-in-out:hover {

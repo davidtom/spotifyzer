@@ -1,19 +1,12 @@
 import React from 'react'
-import { Message, Container, Divider } from 'semantic-ui-react'
+import { PageHeader } from './Headers'
+import { Segment, Divider } from 'semantic-ui-react'
 
 export const WelcomeMessage = (props) => {
 
     return (
-      <Container textAlign={"center"}>
-        <Divider hidden/>
-        <p>SUP</p>
-      </Container>
+      <Segment inverted vertical clearing padded>
+        <PageHeader title={"Select the buttons above to see information about your library"}/>
+      </Segment>
     )
 }
-
-export const failedLoginMessage = () => (
-  <Message negative>
-    <Message.Header>'Log in failed'</Message.Header>
-    <p>'Please try again.'</p>
-  </Message>
-)
