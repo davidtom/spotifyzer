@@ -6,7 +6,7 @@ export const LoginButton = () => (
 )
 
 export const LogoutButton = ({handleClick}) => (
-  <Button size="large" content="Logout" color="green" onClick={handleClick}/>
+  <Button size="large" content="Logout" color="green" onClick={handleClick} as="a" href="/"/>
 )
 
 export const DashboardButton = ({text, selected=false}) => {

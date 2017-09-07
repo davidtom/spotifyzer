@@ -8,21 +8,26 @@ import {Container, Divider} from 'semantic-ui-react'
 
 class OverviewShow extends React.Component{
 
-  componentWillReceiveProps(nextProps){
-    // wait for authorization to complete (and jwt token to be saved) before
-    // fetching data
-    // NOTE: should I use this same paradigm for other pages?
-    if (!this.props.auth.isLoggedIn && nextProps.auth.isLoggedIn){
-      this.props.fetchOverview()
-    }
+  componentWillMount(){
+    // Only fetch data from API if data does not already exist in store
+    if(!this.props.overview.tracks){this.props.fetchOverview()}
   }
+
+  // componentWillReceiveProps(nextProps){
+  //   // wait for authorization to complete (and jwt token to be saved) before
+  //   // fetching data
+  //   // NOTE: should I use this same paradigm for other pages?
+  //   if (!this.props.auth.isLoggedIn && nextProps.auth.isLoggedIn){
+  //     this.props.fetchOverview()
+  //   }
+  // }
 
   render(){
     return (
       <Container textAlign={"center"}>
         <Divider hidden/>
         <DimmerLoader status={this.props.loading}/>
-        <OverviewChart data={this.props.data}/>
+        <OverviewChart data={this.props.overview}/>
       </Container>
     )
   }
@@ -31,7 +36,7 @@ class OverviewShow extends React.Component{
 const mapStateToProps = (state) => {
   return {
     loading: state.overview.loading,
-    data: {
+    overview: {
       tracks: state.overview.tracks,
       artists: state.overview.artists,
       genres: state.overview.genres

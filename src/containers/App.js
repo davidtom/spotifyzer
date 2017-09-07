@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props.auth.error)
+    const AuthenticatedDashboard = withAuthorization(DashboardPage)
     return (
       <Grid centered>
 
@@ -42,7 +42,7 @@ class App extends React.Component {
             <Route exact path="/login" component={loginPlaceholder} />
             <Route exact path="/authorized" component={AuthSwitch} />
             <Route exact path="/login/failure" component={failureAlert} />
-            <Route path="/dashboard" component={DashboardPage} />
+            <Route path="/dashboard" component={AuthenticatedDashboard} />
           </Grid.Column>
         </Grid.Row>
 
@@ -51,13 +51,10 @@ class App extends React.Component {
   }
 }
 
-// <Route path ='/dashboard' render={(props)=>(
-//     withAuthorization(DashboardPage, props)
-//   )} />
 
 
-// <Route path="/dashboard" component={DashboardPage} />
 
+// <Route path="/dashboard" render={(props) => <AuthenticatedDashboard {...props} isisLoggedIn={this.props.auth.isLoggedIn}/>} />
 
 const mapStateToProps = (state) => {
   return {
