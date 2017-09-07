@@ -5,17 +5,9 @@ import {connect} from "react-redux"
 import SiteNavBar from "../components/NavBars/SiteNavBar"
 import {currentUser} from "../actions/authActions"
 import AuthSwitch from '../auth/AuthSwitch'
-import withAuthorization from '../auth/AuthHOC'
 import DashboardPage from "./DashboardPage"
 import {failedLoginMessage} from '../components/PageAssets/Messages'
 import {Grid} from 'semantic-ui-react'
-
-
-
-const loginPlaceholder = () => {return <h1>This page will ask you to log in or something</h1>}
-// TODO: failure alert should be a status given on the main page, not its own page
-const failureAlert = () => {return <h1>Error with login - please try again</h1>}
-
 
 class App extends React.Component {
 
@@ -26,7 +18,6 @@ class App extends React.Component {
   }
 
   render() {
-    const AuthenticatedDashboard = withAuthorization(DashboardPage)
     return (
       <Grid centered>
 
@@ -39,10 +30,10 @@ class App extends React.Component {
         <Grid.Row>
           <Grid.Column width={15}>
             < failedLoginMessage />
-            <Route exact path="/login" component={loginPlaceholder} />
             <Route exact path="/authorized" component={AuthSwitch} />
-            <Route exact path="/login/failure" component={failureAlert} />
-            <Route path="/dashboard" component={AuthenticatedDashboard} />
+            <Route path="/" render={(props) => {
+                return this.props.auth.isLoggedIn ? <DashboardPage {...props}/> : <loginPlaceholder/>
+              }} />
           </Grid.Column>
         </Grid.Row>
 
@@ -50,11 +41,6 @@ class App extends React.Component {
     );
   }
 }
-
-
-
-
-// <Route path="/dashboard" render={(props) => <AuthenticatedDashboard {...props} isisLoggedIn={this.props.auth.isLoggedIn}/>} />
 
 const mapStateToProps = (state) => {
   return {

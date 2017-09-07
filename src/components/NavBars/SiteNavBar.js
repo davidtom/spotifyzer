@@ -1,7 +1,7 @@
 import React from 'react'
 import {SiteLogo} from '../PageAssets/Images'
 import {SiteHeader} from '../PageAssets/Headers'
-import {LoginButton, ProfileDropdown, LogoutButton} from '../PageAssets/Buttons'
+import {LoginButton, ProfileDropdown} from '../PageAssets/Buttons'
 import {Menu} from 'semantic-ui-react'
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"

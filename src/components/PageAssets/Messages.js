@@ -1,5 +1,15 @@
 import React from 'react'
-import { Message } from 'semantic-ui-react'
+import { Message, Container, Divider } from 'semantic-ui-react'
+
+export const WelcomeMessage = (props) => {
+
+    return (
+      <Container textAlign={"center"}>
+        <Divider hidden/>
+        <p>SUP</p>
+      </Container>
+    )
+}
 
 export const failedLoginMessage = () => (
   <Message negative>

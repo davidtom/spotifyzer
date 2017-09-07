@@ -1,5 +1,5 @@
 export default (state={
-  loading: false,
+  // loading: false,
   isLoggedIn: false,
   user: {
     username: null,
@@ -8,10 +8,11 @@ export default (state={
   error: false,
   }, action) => {
   switch(action.type){
-    case ("LOADING_AUTHORIZATION"):
-      return Object.assign({}, state, {loading: true})
+    // case ("LOADING_AUTHORIZATION"):
+    //   return Object.assign({}, state, {loading: true})
     case ("FETCH_AUTHORIZATION"):
-      return Object.assign({}, state, {loading: false,
+      return Object.assign({}, state, {
+                                      // loading: false,
                                       user: action.payload.user,
                                       isLoggedIn: true})
     case ("FAIL_AUTHORIZATION"):

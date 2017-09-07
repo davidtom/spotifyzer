@@ -3,7 +3,7 @@ import {headers} from '../auth/AuthFunctions'
 
 export function fetchAuthorization(code){
   return (dispatch) => {
-    dispatch({type: "LOADING_AUTHORIZATION"})
+    // dispatch({type: "LOADING_AUTHORIZATION"})
     return fetch(`${ApiUrl}users?code=${code}`, {
       method: 'POST',
       headers: headers()
@@ -24,7 +24,7 @@ export function failAuthorization(){
 
 export function currentUser(){
   return (dispatch) => {
-    dispatch({type: "LOADING_AUTHORIZATION"})
+    // dispatch({type: "LOADING_AUTHORIZATION"})
     return fetch(`${ApiUrl}auth`, {headers: headers()})
     .then(resp => resp.json())
     .then(json => {
