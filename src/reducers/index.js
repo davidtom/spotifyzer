@@ -3,10 +3,12 @@ import overviewReducer from "./overview_reducer"
 import genresReducer from "./genres_reducer"
 import artistsReducer from "./artists_reducer"
 import tracksReducer from "./tracks_reducer"
+import authReducer from "./auth_reducer"
 
 export default combineReducers({
   overview: overviewReducer,
   genres: genresReducer,
   artists: artistsReducer,
-  tracks: tracksReducer
+  tracks: tracksReducer,
+  auth: authReducer
 });

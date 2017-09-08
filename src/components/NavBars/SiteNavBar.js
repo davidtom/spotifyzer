@@ -1,20 +1,41 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import {SiteLogo} from '../PageAssets/Images'
 import {SiteHeader} from '../PageAssets/Headers'
-import {LoginButton} from '../PageAssets/Buttons'
+import {LoginButton, ProfileDropdown} from '../PageAssets/Buttons'
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import {logoutUser} from "../../actions/authActions"
 import {Menu} from 'semantic-ui-react'
 
-const SiteNavBar = () => {
+const SiteNavBar = (props) => {
 
   return (
     <Menu className="site-component" pointing secondary inverted>
       < SiteLogo />
-      < SiteHeader />
+      <NavLink to={`${props.match.url}`}>< SiteHeader /></NavLink>
       <Menu.Menu position='right'>
-        <div>< LoginButton /></div>
+        {props.auth.isLoggedIn ?
+          <div>< ProfileDropdown user={props.auth.user} handleClick={props.logoutUser} /></div>
+          :
+          <div>< LoginButton /></div>}
       </Menu.Menu>
     </Menu>
   );
 };
 
-export default SiteNavBar
+// Connect to redux so that nav bar knows log in status
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth
+  }
+}
+
+// Connect to redux logout button can dispatch an action to logout user
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    logoutUser
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SiteNavBar)
