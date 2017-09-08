@@ -21,7 +21,7 @@ class App extends React.Component {
     return (
       <Grid centered>
 
-        <Grid.Row>
+        <Grid.Row verticalAlign="middle" stretched>
           <Grid.Column stretched>
             <Route path="/" render={(props) => <SiteNavBar {...props}/>} />
           </Grid.Column>

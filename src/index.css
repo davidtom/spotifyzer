@@ -1,3 +1,5 @@
+/*Set attributes of entire page
+Especially: black background, white text*/
 body {
   margin: 0;
   padding: 0;
@@ -6,33 +8,50 @@ body {
   color: white;
 }
 
+/*<----- Site Nav Bar ------>*/
+
+/*'Spotifyzer' Site Header*/
 #site-header{
   font-size: 5em;
-}
-
-#site-header:hover {
   color: rgb(13, 188, 61) !important;
 }
 
-div.site-component{
-  background: rgb(40,40,40) !important;
-}
-
-a, div {
+#site-header:hover {
   color: white !important;
 }
 
+/*Log in button*/
 a.log-in-out:hover {
   color: rgb(0, 0, 0) !important;
 }
 
+/* Loggedin profile name and menu */
+div.menu.transition.visible {
+  background: rgb(51, 51, 51);
+  width: 100%;
+}
+/*Font size of profile name*/
 span.profile-name {
-  font-size: 1.5em;
+  font-size: 2em;
+}
+/*Font size of menu options*/
+div.menu.transition.visible span.text{
+  font-size: 1.5em ;
 }
 
-div.menu {
-  font-size: 1.5em;
+/*<----- Site Pages ------>*/
+
+/*Set page background color (darkish grey)*/
+div.site-component{
+  background: rgb(40,40,40) !important;
 }
+
+/*Set color of page font (which are either links or inside of divs)*/
+a, div {
+  color: white !important;
+}
+
+/*<----- Overview Page ------>*/
 
 table {
   margin: 0 auto !important;

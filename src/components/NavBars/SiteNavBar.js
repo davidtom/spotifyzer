@@ -6,21 +6,26 @@ import {LoginButton, ProfileDropdown} from '../PageAssets/Buttons'
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import {logoutUser} from "../../actions/authActions"
-import {Menu} from 'semantic-ui-react'
+import {Grid} from 'semantic-ui-react'
 
 const SiteNavBar = (props) => {
 
   return (
-    <Menu className="site-component" pointing secondary inverted>
-      < SiteLogo />
-      <NavLink to={`${props.match.url}`}>< SiteHeader /></NavLink>
-      <Menu.Menu position='right'>
-        {props.auth.isLoggedIn ?
-          <div>< ProfileDropdown user={props.auth.user} handleClick={props.logoutUser} /></div>
-          :
-          <div>< LoginButton /></div>}
-      </Menu.Menu>
-    </Menu>
+    <Grid centered>
+      <Grid.Row>
+        <Grid.Column width={11}>
+          < SiteLogo />
+          <NavLink to={`${props.match.url}`}>< SiteHeader /></NavLink>
+        </Grid.Column>
+        <Grid.Column width={4} floated='right' verticalAlign='middle'>
+          {props.auth.isLoggedIn ?
+            < ProfileDropdown user={props.auth.user} handleClick={props.logoutUser} />
+            :
+            < LoginButton />}
+        </Grid.Column>
+      </Grid.Row>
+
+    </Grid>
   );
 };
 
