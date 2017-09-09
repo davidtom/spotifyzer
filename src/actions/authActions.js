@@ -9,26 +9,21 @@ export function fetchAuthorization(code){
       })
     .then(resp => resp.json())
     .then(json => {
-      // Save JWT token in local storage, then update store
+      // Save JWT token in local storage, then update auth in store
       localStorage.setItem("jwt", json.jwt);
-      return dispatch({type:"FETCH_AUTHORIZATION", payload: {user: json.user}
+      return dispatch({type:"UPDATE_AUTHORIZATION", payload: {user: json.user}
       })}
     )
   }
 }
 
-export function failAuthorization(){
-  return {type: "FAIL_AUTHORIZATION"}
-}
-
 export function currentUser(){
   return (dispatch) => {
-    // dispatch({type: "LOADING_AUTHORIZATION"})
     return fetch(`${ApiUrl}auth`, {headers: headers()})
     .then(resp => resp.json())
     .then(json => {
       if (!json.error){
-        return dispatch({type:"FETCH_AUTHORIZATION", payload: {user: json}})
+        return dispatch({type:"UPDATE_AUTHORIZATION", payload: {user: json}})
       }
     })
   }
