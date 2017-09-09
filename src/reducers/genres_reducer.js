@@ -1,5 +1,6 @@
 export default (state={
   loading: false,
+  loadingLibrary: false,
   genresList:[],
   artistsTotal: null,
   selection: {
@@ -10,8 +11,11 @@ export default (state={
   switch(action.type){
     case ("LOADING_GENRES"):
       return Object.assign({}, state, {loading: true})
+    case ("GENRES_LOADING_LIBRARY"):
+      return Object.assign({}, state, {loadingLibrary: true})
     case ("FETCH_GENRES"):
       return Object.assign({}, state, {loading: false,
+                                      loadingLibrary: false,
                                       genresList: action.payload.genres,
                                       artistsTotal: action.payload.artistsTotal})
     case ("SELECT_GENRE"):

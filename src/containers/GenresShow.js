@@ -3,7 +3,7 @@ import {bindActionCreators} from "redux"
 import { connect } from 'react-redux';
 import {fetchGenres, selectGenre} from "../actions/genresActions"
 import {SectionHeader} from '../components/PageAssets/Headers'
-import {DimmerLoader} from '../components/PageAssets/Loaders'
+import {ContentLoader, LibraryLoader} from '../components/PageAssets/Loaders'
 import renderChart from '../components/Genres/bubbleChartD3'
 import GenreArtistsList from '../components/Genres/GenreArtistsList'
 
@@ -54,7 +54,8 @@ class GenresShow extends React.Component{
       <Grid.Column textAlign={"center"}>
         <SectionHeader title={"Genres"}/>
         <div id='data-container'/>
-        <DimmerLoader status={this.props.loading}/>
+          <ContentLoader status={this.props.loading && !this.props.libraryLoading}/>
+          <LibraryLoader status={this.props.libraryLoading}/>
       </Grid.Column>
       <Grid.Column textAlign={"center"} width={6} floated={"right"}>
         <SectionHeader title={this.formatArtistTitle()}/>
@@ -70,7 +71,8 @@ const mapStateToProps = (state) => {
     loading: state.genres.loading,
     genresList: state.genres.genresList,
     artistsTotal: state.genres.artistsTotal,
-    selection: state.genres.selection
+    selection: state.genres.selection,
+    libraryLoading: state.genres.loadingLibrary
     }
 }
 

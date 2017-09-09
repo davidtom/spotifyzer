@@ -3,7 +3,7 @@ import {bindActionCreators} from "redux"
 import { connect } from 'react-redux';
 import {fetchTopTracks} from "../actions/tracksActions"
 import TracksList from '../components/Tracks/TracksList'
-import {DimmerLoader} from '../components/PageAssets/Loaders'
+import {ContentLoader} from '../components/PageAssets/Loaders'
 import {Container, Divider} from 'semantic-ui-react'
 
 class TracksShow extends React.Component{
@@ -17,7 +17,7 @@ class TracksShow extends React.Component{
     return (
       <Container textAlign={"center"}>
         <Divider hidden/>
-        <DimmerLoader status={this.props.loading}/>
+        <ContentLoader status={this.props.loading}/>
         <TracksList tracks={this.props.topTracks}/>
       </Container>
     )

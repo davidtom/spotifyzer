@@ -3,7 +3,7 @@ import {bindActionCreators} from "redux"
 import { connect } from 'react-redux';
 import {fetchTopArtists} from "../actions/artistsActions"
 import ArtistsList from '../components/Artists/ArtistsList'
-import {DimmerLoader} from '../components/PageAssets/Loaders'
+import {ContentLoader} from '../components/PageAssets/Loaders'
 import {Container, Divider} from 'semantic-ui-react'
 
 class ArtistsShow extends React.Component{
@@ -17,7 +17,7 @@ class ArtistsShow extends React.Component{
     return (
       <Container textAlign={"center"}>
         <Divider hidden/>
-        <DimmerLoader status={this.props.loading}/>
+        <ContentLoader status={this.props.loading}/>
         <ArtistsList artists={this.props.topArtists}/>
       </Container>
     )

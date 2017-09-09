@@ -3,7 +3,7 @@ import {bindActionCreators} from "redux"
 import { connect } from 'react-redux';
 import {fetchOverview} from "../actions/overviewActions"
 import OverviewChart from '../components/Overview/OverviewChart'
-import {DimmerLoader} from '../components/PageAssets/Loaders'
+import {ContentLoader, LibraryLoader} from '../components/PageAssets/Loaders'
 import {Container, Divider} from 'semantic-ui-react'
 
 class OverviewShow extends React.Component{
@@ -13,20 +13,12 @@ class OverviewShow extends React.Component{
     if(!this.props.overview.tracks){this.props.fetchOverview()}
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   // wait for authorization to complete (and jwt token to be saved) before
-  //   // fetching data
-  //   // NOTE: should I use this same paradigm for other pages?
-  //   if (!this.props.auth.isLoggedIn && nextProps.auth.isLoggedIn){
-  //     this.props.fetchOverview()
-  //   }
-  // }
-
   render(){
     return (
       <Container textAlign={"center"}>
         <Divider hidden/>
-        <DimmerLoader status={this.props.loading}/>
+        <ContentLoader status={this.props.loading && !this.props.libraryLoading}/>
+        <LibraryLoader status={this.props.libraryLoading}/>
         <OverviewChart data={this.props.overview}/>
       </Container>
     )
@@ -41,7 +33,7 @@ const mapStateToProps = (state) => {
       artists: state.overview.artists,
       genres: state.overview.genres
     },
-    auth: state.auth
+    libraryLoading: state.overview.loadingLibrary
   }
 }
 
