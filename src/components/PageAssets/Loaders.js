@@ -6,5 +6,7 @@ export const ContentLoader = ({status}) => (
 )
 
 export const LibraryLoader = ({status}) => (
-  <Loader inverted indeterminate size='large' active={status}>Fetching library data</Loader>
+  <Loader inverted indeterminate size='large' active={status}>
+    <p>Fetching library data<br/>Check back soon...</p>
+  </Loader>
 )

@@ -16,9 +16,21 @@ export function fetchOverview(){
         type:"FETCH_OVERVIEW",
         payload: {tracks: json.tracks,
                   artists: json.artists,
-                  genres: json.genres}
+                  genres: json.genres,
+                  lastUpdate: json.last_update}
         })
       }
     })
+  }
+}
+
+export function updateLibrary(){
+  return (dispatch) => {
+    dispatch({type: "UPDATE_LIBRARY"})
+    return fetch(`${ApiUrl}library`, {
+      method: 'PATCH',
+      headers: headers()
+      }
+    )
   }
 }

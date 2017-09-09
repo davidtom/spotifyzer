@@ -8,8 +8,6 @@ export default (state={
   error: false,
   }, action) => {
   switch(action.type){
-    // case ("LOADING_AUTHORIZATION"):
-    //   return Object.assign({}, state, {loading: true})
     case ("FETCH_AUTHORIZATION"):
       return Object.assign({}, state, {
                                       // loading: false,

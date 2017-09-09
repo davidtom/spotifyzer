@@ -3,7 +3,8 @@ export default (state=
   loadingLibrary: false,
   tracks: null,
   artists: null,
-  genres: null
+  genres: null,
+  lastUpdate: null
   }, action) => {
   switch(action.type){
     case ("LOADING_OVERVIEW"):
@@ -15,8 +16,11 @@ export default (state=
                                         loadingLibrary: false,
                                         tracks: action.payload.tracks,
                                         artists: action.payload.artists,
-                                        genres: action.payload.genres
+                                        genres: action.payload.genres,
+                                        lastUpdate: action.payload.lastUpdate
                                       })
+    case ("UPDATE_LIBRARY"):
+      return Object.assign({}, state, {tracks:null, artists: null, genres: null})
     default:
       return state
   }

@@ -57,3 +57,7 @@ table {
   margin: 0 auto !important;
   font-size: 1.5em !important;
 }
+
+div.library-update-message {
+  margin: 0 auto !important;
+}

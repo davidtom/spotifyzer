@@ -24,3 +24,7 @@ export function fetchGenres(){
 export function selectGenre(data){
   return {type: "SELECT_GENRE", payload: data}
 }
+
+export function genreUpdateLibrary(){
+  return {type: "GENRE_UPDATE_LIBRARY"}
+}

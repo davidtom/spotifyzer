@@ -20,6 +20,8 @@ export default (state={
                                       artistsTotal: action.payload.artistsTotal})
     case ("SELECT_GENRE"):
       return Object.assign({}, state, {selection: {genre: action.payload.name, artists: action.payload.artists}})
+    case ("UPDATE_LIBRARY"):
+      return Object.assign({}, state, {genresList: [], artistsTotal: null, selection: {genre: null, artists: []}})
     default:
       return state
   }
