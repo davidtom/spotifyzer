@@ -34,18 +34,9 @@ class GenresShow extends React.Component{
     }
   }
 
-  formatArtistTitle(){
+  sectionTitle(){
     const genre = this.props.selection.genre
-
-    function toTitleCase(str){
-      return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-    }
-
-    if (!genre){
-      return "Artists"
-    } else {
-      return `${toTitleCase(genre)} Artists`
-    }
+    return genre ? `${genre} Artists` : "Artists"
   }
 
   render(){
@@ -58,7 +49,7 @@ class GenresShow extends React.Component{
           <LibraryLoader status={this.props.libraryLoading}/>
       </Grid.Column>
       <Grid.Column textAlign={"center"} width={6} floated={"right"}>
-        <SectionHeader title={this.formatArtistTitle()}/>
+        <SectionHeader title={this.sectionTitle()}/>
         <GenreArtistsList artists={this.props.selection.artists}/>
       </Grid.Column>
       </Grid>
