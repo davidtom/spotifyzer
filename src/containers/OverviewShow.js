@@ -41,8 +41,9 @@ class OverviewShow extends React.Component{
         <LibraryLoader status={this.props.libraryLoading}/>
         <OverviewChart data={this.props.overview}/>
         <Divider hidden />
-        <LastLibraryUpdate date={this.props.overview.lastUpdate}
-                            updateLibrary={this.updateLibrary}/>
+        {!this.props.libraryLoading && <LastLibraryUpdate date={this.props.overview.lastUpdate}
+                            updateLibrary={this.updateLibrary}/>}
+
         {this.state.redirect && <Redirect to={'/'}/>}
       </Container>
     )
