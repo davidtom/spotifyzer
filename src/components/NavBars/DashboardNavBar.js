@@ -11,6 +11,7 @@ const DashboardNavBar = ({mainUrl}) => {
       <NavLink to={`${mainUrl}genres`}><DashboardButton text={"Genres"}/></NavLink>
       <NavLink to={`${mainUrl}artists`}><DashboardButton text={"Top Artists"}/></NavLink>
       <NavLink to={`${mainUrl}tracks`}><DashboardButton text={"Top Tracks"}/></NavLink>
+      <NavLink to={`${mainUrl}recent`}><DashboardButton text={"Recent Tracks"}/></NavLink>
       <Divider hidden />
     </div>
   );

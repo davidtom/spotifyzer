@@ -13,3 +13,16 @@ export function fetchTopTracks(){
     )
   }
 }
+
+export function fetchRecentTracks(){
+  return (dispatch) => {
+    dispatch({type: "LOADING_RECENT_TRACKS"})
+    return fetch(`${ApiUrl}tracks/recent`, {headers: headers()})
+    .then(resp => resp.json())
+    .then(json => dispatch({
+      type:"FETCH_RECENT_TRACKS",
+      payload: {tracks: json}
+      })
+    )
+  }
+}

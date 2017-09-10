@@ -5,6 +5,7 @@ import OverviewShow from "./OverviewShow"
 import GenresShow from "./GenresShow"
 import ArtistsShow from "./ArtistsShow"
 import TracksShow from "./TracksShow"
+import RecentShow from "./RecentShow"
 import {Segment} from 'semantic-ui-react'
 import {WelcomeMessage} from '../components/PageAssets/Messages'
 
@@ -18,6 +19,7 @@ const DashboardPage = ({match}) => {
         <Route path={`${match.url}genres`} component={GenresShow} />
         <Route path={`${match.url}artists`} component={ArtistsShow} />
         <Route path={`${match.url}tracks`} component={TracksShow} />
+        <Route path={`${match.url}recent`} component={RecentShow} />
       </Switch>
     </Segment>
   )
