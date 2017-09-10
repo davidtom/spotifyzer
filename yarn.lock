@@ -5395,6 +5395,10 @@ react-scripts@1.0.12:
   optionalDependencies:
     fsevents "1.1.2"
 
+react-spotify-player@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-spotify-player/-/react-spotify-player-1.0.2.tgz#a2a2fbda948b461c4853a1103701506f0e407980"
+
 "react@^15 || ^16", react@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"

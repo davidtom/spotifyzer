@@ -19,7 +19,17 @@ class OverviewShow extends React.Component{
 
   componentDidMount(){
     // Only fetch data from API if data does not already exist in store
-    if(!this.props.overview.tracks){this.props.fetchOverview()}
+    if(!this.props.tracks){this.props.fetchOverview()}
+  }
+
+  componentWillReceiveProps(nextProps){
+    //If next props don't include track data, set a polling interval
+    if (nextProps.loadingLibrary){
+      clearInterval(window.fetchOverviewInterval)
+      window.fetchOverviewInterval = setInterval(this.props.fetchOverview, 5000)
+    } else {
+      clearInterval(window.fetchOverviewInterval)
+    }
   }
 
   updateLibrary = () => {
@@ -37,11 +47,14 @@ class OverviewShow extends React.Component{
     return (
       <Container textAlign={"center"}>
         <Divider hidden/>
-        <ContentLoader status={this.props.loading && !this.props.libraryLoading}/>
-        <LibraryLoader status={this.props.libraryLoading}/>
-        <OverviewChart data={this.props.overview}/>
+        <ContentLoader status={this.props.loading && !this.props.loadingLibrary}/>
+        <LibraryLoader status={this.props.loadingLibrary}/>
+        <OverviewChart data={{tracks: this.props.tracks,
+                              artists: this.props.artists,
+                              genres: this.props.genres}}/>
         <Divider hidden />
-        {!this.props.libraryLoading && <LastLibraryUpdate date={this.props.overview.lastUpdate}
+
+        {!this.props.loadingLibrary && <LastLibraryUpdate date={this.props.lastUpdate}
                             updateLibrary={this.updateLibrary}/>}
 
         {this.state.redirect && <Redirect to={'/'}/>}
@@ -53,8 +66,11 @@ class OverviewShow extends React.Component{
 const mapStateToProps = (state) => {
   return {
     loading: state.overview.loading,
-    overview: state.overview,
-    libraryLoading: state.overview.loadingLibrary
+    loadingLibrary: state.overview.loadingLibrary,
+    tracks: state.overview.tracks,
+    artists: state.overview.artists,
+    genres: state.overview.genres,
+    lastUpdate: state.overview.lastUpdate
   }
 }
 

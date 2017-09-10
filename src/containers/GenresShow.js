@@ -32,6 +32,14 @@ class GenresShow extends React.Component{
     if (nextProps.genresList.length){
       renderChart({genresList: nextProps.genresList, artistsTotal: nextProps.artistsTotal}, this.handleClick)
     }
+
+    //If next props don't include genre data, set a polling interval
+    if (nextProps.loadingLibrary){
+      clearInterval(window.fetchGenreInterval)
+      window.fetchGenreInterval = setInterval(this.props.fetchGenres, 5000)
+    } else {
+      clearInterval(window.fetchGenreInterval)
+    }
   }
 
   sectionTitle(){
@@ -45,8 +53,8 @@ class GenresShow extends React.Component{
       <Grid.Column textAlign={"center"}>
         <SectionHeader title={"Genres"}/>
         <div id='data-container'/>
-          <ContentLoader status={this.props.loading && !this.props.libraryLoading}/>
-          <LibraryLoader status={this.props.libraryLoading}/>
+          <ContentLoader status={this.props.loading && !this.props.loadingLibrary}/>
+          <LibraryLoader status={this.props.loadingLibrary}/>
       </Grid.Column>
       <Grid.Column textAlign={"center"} width={6} floated={"right"}>
         <SectionHeader title={this.sectionTitle()}/>
@@ -60,10 +68,10 @@ class GenresShow extends React.Component{
 const mapStateToProps = (state) => {
   return {
     loading: state.genres.loading,
+    loadingLibrary: state.genres.loadingLibrary,
     genresList: state.genres.genresList,
     artistsTotal: state.genres.artistsTotal,
-    selection: state.genres.selection,
-    libraryLoading: state.genres.loadingLibrary
+    selection: state.genres.selection
     }
 }
 

@@ -21,7 +21,7 @@ const Track = ({ position, name, spotifyUrl, imageUrl, artists, album}) => {
             <TrackHeader
               name={<a href={`${spotifyUrl}`} target="_blank">{name}</a>}
               artists={trackArtists}
-              album={album.name} />
+              />
           </Grid.Column>
         </Grid.Row>
       </Grid>

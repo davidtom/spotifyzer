@@ -20,7 +20,7 @@ export const ArtistHeader = (props) => (
 export const TrackHeader = (props) => (
   <div>
   <Header size="large">{props.name}</Header>
-  <Header size="medium">{props.artists} - {props.album}</Header>
+  <Header size="medium">{props.artists}</Header>
   </div>
 )
 
