@@ -46,7 +46,7 @@ export default function renderChart({genresList, artistsTotal}, handleClick){
   // Simulate physics of the circles when they are created
   // Positive strength causes nodes (data) to attract; negative repels
   const simulation = d3.forceSimulation(data)
-    .force("charge", d3.forceManyBody().strength([-50]))
+    .force("charge", d3.forceManyBody().strength([-40]))
     .force("x", d3.forceX()) // drags the circles towards the 0 position
     .force("y", d3.forceY()) // drags the circles towards the 0 position
     .on("tick", ticked);

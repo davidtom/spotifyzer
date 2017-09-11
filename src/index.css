@@ -10,6 +10,7 @@ body {
 
 /*<----- Site Components ------>*/
 
+/* Scroll setting for scrollable divs*/
 div.scrollable {
   /*height: 800px;*/
   height: 70vh;
