@@ -12,7 +12,8 @@ export default function renderChart({genresList, artistsTotal}, handleClick){
   const columnForRadius = "count";
   const selection = d3.select("#data-container")
 
-  // Remove any and all children of the div that will hold the chart
+  // Remove any and all children of the div that will hold the chart before
+  // rendering
   const containerNode = document.getElementById("data-container")
 
   if (containerNode){

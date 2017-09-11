@@ -15,7 +15,8 @@ export default function renderChart({recentTracks}, handleClick){
   const svgHeight = 417;
   const selection = d3.select("#data-container")
 
-  // Remove any and all children of the div that will hold the chart
+  // Remove any and all children of the div that will hold the chart before
+  // rendering
   const containerNode = document.getElementById("data-container")
 
   if (containerNode){
@@ -46,6 +47,7 @@ export default function renderChart({recentTracks}, handleClick){
   x.domain(data.map(function(d) { return d.time; }));
   y.domain([0, d3.max(data, function(d) { return d.count; })]);
 
+  // Append x and y axes to svg
   g.append("g")
     .attr("class", "axis axis--x")
     .attr("transform", "translate(0," + height + ")")
@@ -54,6 +56,7 @@ export default function renderChart({recentTracks}, handleClick){
   g.append("g")
     .attr("class", "axis axis--y")
     .call(d3.axisLeft(y).ticks())
+    // TODO: this should create an axis lable, but is not working
     // .append("text")
     // .attr("transform", "rotate(90)")
     // .attr("y", 6)
@@ -75,6 +78,7 @@ export default function renderChart({recentTracks}, handleClick){
     .style("width", "auto")
     .text("");
 
+  // Append data to svg
   g.selectAll(".bar")
     .data(data)
     .enter().append("rect")

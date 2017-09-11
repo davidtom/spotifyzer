@@ -10,12 +10,6 @@ import {Grid} from 'semantic-ui-react'
 
 class RecentShow extends React.Component{
 
-  // TODO:
-  // Comment d3 code
-  // Edit css - remove any unneeded selectors
-  // Give some other quick analyses below chart: songs/hour, songs/day, total time, total time listening to music?
-  // All of this data would have to be gathered on back end
-
   componentDidMount(){
     // Only fetch data from API if data does not already exist in store
     // Else: Fix issue with chart not displaying when flipping between dashboard
