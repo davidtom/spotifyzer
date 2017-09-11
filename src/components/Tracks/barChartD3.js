@@ -9,8 +9,9 @@ export default function renderChart({recentTracks}, handleClick){
 
   // NOTE: for styling, see Index.css
 
-  // Set up chart dimensions
-  const data = recentTracks
+  // Set up chart data and dimensions
+  // deep copy data so that date parsing does not cause issues on rerender
+  const data = JSON.parse(JSON.stringify(recentTracks))
   const svgWidth = 800;
   const svgHeight = 417;
   const selection = d3.select("#data-container")
@@ -37,12 +38,38 @@ export default function renderChart({recentTracks}, handleClick){
       width = +svg.attr("width") - margin.left - margin.right,
       height = +svg.attr("height") - margin.top - margin.bottom;
 
+  // Function to parse date and time
+  var	parseDate = function(str){
+    // split date str and save its components
+    const splitStr = str.split(new RegExp('-|T'))
+    const y = splitStr[0]
+    const m = splitStr[1]
+    const d = splitStr[2]
+    const h = splitStr[3]
+    // Create a new Date object, which converts automatically to local time
+    const date = new Date(`${m}/${d}/${y} ${h}:00:00 UTC`)
+    const dateString = date.toString()
+    // remove time zone data to return the date string in following format: Mon Sep 11 2017 08:00
+
+    // TODO: Remove day and make hour a full hour (ie 13:00) - also, prevent click from fucking up data!
+    // Data is being altered by d3, and therefore when i click and change props, it passes it back down,
+    // at which point the parseDate function above breaks
+
+    return dateString.split(":")[0] + ":00"
+  }
+
   // Set scale and formatting for x and y axes
   var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
       y = d3.scaleLinear().rangeRound([height, 0]);
 
   var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // remap data to format date and time
+  data.forEach(function(d) {
+      d.time = parseDate(d.time);
+      d.count = +d.count;
+  });
 
   x.domain(data.map(function(d) { return d.time; }));
   y.domain([0, d3.max(data, function(d) { return d.count; })]);
