@@ -34,7 +34,7 @@ export default function renderChart({recentTracks}, handleClick){
 
 
   // Set chart margins
-  var margin = {top: 20, right: 20, bottom: 70, left: 40},
+  var margin = {top: 20, right: 30, bottom: 70, left: 40},
       width = +svg.attr("width") - margin.left - margin.right,
       height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -48,18 +48,20 @@ export default function renderChart({recentTracks}, handleClick){
     const h = splitStr[3]
     // Create a new Date object, which converts automatically to local time
     const date = new Date(`${m}/${d}/${y} ${h}:00:00 UTC`)
+    // Convert date to string and split so that necessary pieces can be joined
+    // String is in format: Mon Sep 11 2017 16:00:00 GMT-0400 (EDT)
     const dateString = date.toString()
-    // remove time zone data to return the date string in following format: Mon Sep 11 2017 08:00
-
-    // TODO: Remove day and make hour a full hour (ie 13:00) - also, prevent click from fucking up data!
-    // Data is being altered by d3, and therefore when i click and change props, it passes it back down,
-    // at which point the parseDate function above breaks
-
-    return dateString.split(":")[0] + ":00"
+    // Split dateString into pieces so that desired pieces can be pulled out
+    const splitDate = date.toString().split(" ")
+    // Format time to only display hour (HH:00)
+    const hour = splitDate[4].split(":")[0] + ":00"
+    // Join date into following format: MMM DD HH:00
+    const formattedDate = [splitDate[1], splitDate[2], hour].join(" ")
+    return formattedDate
   }
 
   // Set scale and formatting for x and y axes
-  var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+  var x = d3.scaleBand().rangeRound([0, width]).padding(0.2),
       y = d3.scaleLinear().rangeRound([height, 0]);
 
   var g = svg.append("g")
@@ -83,13 +85,16 @@ export default function renderChart({recentTracks}, handleClick){
   g.append("g")
     .attr("class", "axis axis--y")
     .call(d3.axisLeft(y).ticks())
-    // TODO: this should create an axis lable, but is not working
-    // .append("text")
-    // .attr("transform", "rotate(90)")
-    // .attr("y", 6)
-    // .attr("dy", "1.5em")
-    // .attr("text-anchor", "end")
-    // .text("Count");
+    .append("text")
+    .attr("transform", "rotate(270)")
+    .attr("x", -200)
+    .attr("y", -50)
+    .attr("dy", "1.5em")
+    .attr("text-anchor", "start")
+    .attr("class", "y-label")
+    .attr("fill", "white")
+    .attr("font-size", "1.5em")
+    .text("Tracks played");
 
   // Create tooltips for each bar
   var tooltip = selection
@@ -117,11 +122,11 @@ export default function renderChart({recentTracks}, handleClick){
       .on("mouseover", function(d) {
       // Split time into date and hour
       let timeArray=d.time.split(" ")
-      const date=timeArray.splice(0,4).join(" ")
+      const date=timeArray.splice(0,2).join(" ")
       const time=timeArray
       tooltip.html(`Date: ${date}<br>
                     Hour: ${time}<br>
-                    ${d.count} tracks`);
+                    Tracks played: ${d.count}`);
         return tooltip.style("visibility", "visible");
       })
       .on("mousemove", function() {
