@@ -20,9 +20,12 @@ class DashboardPage extends React.Component {
     const match = this.props.match
     return (
       <Segment className="site-component" textAlign="center">
+
         <DashboardNavBar mainUrl={match.url}/>
+
         <Button onClick={this.toggleVisibility}>Toggle Visibility</Button>
-        <Sidebar.Pushable as={Segment}>
+
+        <Sidebar.Pushable as={"div"}>
           <Sidebar as={Segment} animation='push' direction='bottom' visible={this.state.visible} inverted>
             <SpotifyPlayer
               uri="spotify:artist:5INjqkS1o8h1imAzPqGZBb"
@@ -30,7 +33,8 @@ class DashboardPage extends React.Component {
               view={'list'}
               theme={'black'}
               />
-        </Sidebar>
+          </Sidebar>
+
         <Sidebar.Pusher as={"div"} className="pusher">
         <Switch>
           <Route path={`${match.url}/`} component={WelcomeMessage}/>
@@ -41,6 +45,7 @@ class DashboardPage extends React.Component {
           <Route path={`${match.url}recent`} component={RecentShow} />
         </Switch>
         </Sidebar.Pusher>
+
       </Sidebar.Pushable>
       </Segment>
     )
