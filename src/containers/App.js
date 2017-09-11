@@ -7,7 +7,6 @@ import SiteNavBar from "../components/NavBars/SiteNavBar"
 import {currentUser} from "../actions/authActions"
 import AuthSwitch from '../auth/AuthSwitch'
 import DashboardPage from "./DashboardPage"
-import SpotifyPlayer from 'react-spotify-player';
 import {Grid} from 'semantic-ui-react'
 
 class App extends React.Component {
@@ -41,13 +40,6 @@ class App extends React.Component {
     );
   }
 }
-
-// <SpotifyPlayer
-//   uri="spotify:artist:5INjqkS1o8h1imAzPqGZBb"
-//   size={{width:'90%', height: 300}}
-//   view={'list'}
-//   theme={'black'}
-//   />
 
 const mapStateToProps = (state) => {
   return {

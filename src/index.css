@@ -10,6 +10,11 @@ body {
 
 /*<----- Site Components ------>*/
 
+.pusher {
+  height: 100%;
+  width: 100%;
+}
+
 /* Scroll setting for scrollable divs*/
 div.scrollable {
   /*height: 800px;*/
