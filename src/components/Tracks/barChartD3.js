@@ -52,7 +52,7 @@ export default function renderChart({recentTracks}, handleClick){
     // String is in format: Mon Sep 11 2017 16:00:00 GMT-0400 (EDT)
     const dateString = date.toString()
     // Split dateString into pieces so that desired pieces can be pulled out
-    const splitDate = date.toString().split(" ")
+    const splitDate = dateString.split(" ")
     // Format time to only display hour (HH:00)
     const hour = splitDate[4].split(":")[0] + ":00"
     // Join date into following format: MMM DD HH:00
