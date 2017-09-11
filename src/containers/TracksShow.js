@@ -15,7 +15,7 @@ class TracksShow extends React.Component{
 
   render(){
     return (
-      <Container textAlign={"center"}>
+      <Container className="scrollable" textAlign={"center"}>
         <Divider hidden/>
         <ContentLoader status={this.props.loading}/>
         <TracksList tracks={this.props.topTracks}/>

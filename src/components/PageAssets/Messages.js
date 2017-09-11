@@ -14,7 +14,7 @@ export const LastLibraryUpdate = ({date, updateLibrary}) => {
   return (
     <Segment className='library-update-message' compact inverted>
       <div>
-      <Message compact color='black' size="medium"
+      <Message compact color='black' size="large"
         header='Your library data was last updated on:'
         content={date}/>
       </div>

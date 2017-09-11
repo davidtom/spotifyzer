@@ -38,15 +38,17 @@ class RecentShow extends React.Component{
   render(){
     return (
       <Grid columns={2}>
-      <Grid.Column textAlign={"center"}>
-        <SectionHeader title={"Recent Tracks"}/>
-        <div id='data-container'/>
+
+        <Grid.Column textAlign="center" width={8}>
+          <SectionHeader title={"Recent Tracks"}/>
+          <div id='data-container'/>
           <ContentLoader status={this.props.loading}/>
-      </Grid.Column>
-      <Grid.Column textAlign={"center"} width={6} floated={"right"}>
-        <SectionHeader title={'Tracks'}/>
-        <TracksList tracks={this.props.selection.tracks}/>
-      </Grid.Column>
+        </Grid.Column>
+
+        <Grid.Column className="scrollable" textAlign="center" width={6} floated="right">
+          <SectionHeader title={'Tracks'}/>
+          <TracksList tracks={this.props.selection.tracks}/>
+        </Grid.Column>
       </Grid>
     )
   }

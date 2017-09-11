@@ -61,7 +61,7 @@ class GenresShow extends React.Component{
           <ContentLoader status={this.props.loading && !this.props.loadingLibrary}/>
           <LibraryLoader status={this.props.loadingLibrary}/>
       </Grid.Column>
-      <Grid.Column textAlign={"center"} width={6} floated={"right"}>
+      <Grid.Column className="scrollable" textAlign="center" width={6} floated="right">
         <SectionHeader title={this.sectionTitle()}/>
         <GenreArtistsList artists={this.props.selection.artists}/>
       </Grid.Column>

@@ -8,6 +8,15 @@ body {
   color: white;
 }
 
+/*<----- Site Components ------>*/
+
+div.scrollable {
+  /*height: 800px;*/
+  height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 /*<----- Site Nav Bar ------>*/
 
 /*'Spotifyzer' Site Header*/
@@ -62,7 +71,7 @@ div.library-update-message {
   margin: 0 auto !important;
 }
 
-/*<----- Overview Page ------>*/
+/*<----- Recent Page ------>*/
 /*D3 Bar Chart Formatting*/
 /* Format axes */
 .axis path,

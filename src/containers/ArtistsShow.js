@@ -15,7 +15,7 @@ class ArtistsShow extends React.Component{
 
   render(){
     return (
-      <Container textAlign={"center"}>
+      <Container className="scrollable" textAlign={"center"}>
         <Divider hidden/>
         <ContentLoader status={this.props.loading}/>
         <ArtistsList artists={this.props.topArtists}/>
