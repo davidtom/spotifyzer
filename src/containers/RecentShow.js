@@ -34,14 +34,14 @@ class RecentShow extends React.Component{
       <Grid columns={2}>
 
         <Grid.Column textAlign="center" width={8}>
-          <SectionHeader title={"Recent Tracks"}/>
+          <SectionHeader title={"50 Most Recent Tracks"}/>
           <div id='data-container'/>
           <ContentLoader status={this.props.loading}/>
         </Grid.Column>
 
         <Grid.Column className="scrollable" textAlign="center" width={6} floated="right">
           <SectionHeader title={'Tracks'}/>
-          <TracksList tracks={this.props.selection.tracks}/>
+          <TracksList tracks={this.props.selection.tracks} recentTracks={true}/>
         </Grid.Column>
       </Grid>
     )

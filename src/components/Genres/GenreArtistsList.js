@@ -1,6 +1,6 @@
 import React from 'react';
 import Artist from '../Artists/Artist'
-import EmptySelectionInstruction from './EmptySelectionInstruction'
+import {EmptySelectionInstruction} from '../PageAssets/Messages'
 import {Divider} from 'semantic-ui-react'
 
 const GenreArtistsList = ({ artists }) => {
@@ -16,7 +16,7 @@ const GenreArtistsList = ({ artists }) => {
   );
   return (
     <div id="artists-list-container">
-      {renderArtists.length ? renderArtists : <EmptySelectionInstruction/>}
+      {renderArtists.length ? renderArtists : <EmptySelectionInstruction message={'Select a genre to view artists'}/>}
     </div>
   );
 };

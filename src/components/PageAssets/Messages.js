@@ -1,5 +1,5 @@
 import React from 'react'
-import { PageHeader } from './Headers'
+import { PageHeader, ArtistHeader } from './Headers'
 import { Segment, Message, Button, Icon } from 'semantic-ui-react'
 
 export const WelcomeMessage = (props) => {
@@ -9,6 +9,12 @@ export const WelcomeMessage = (props) => {
       </Segment>
     )
 }
+
+export const EmptySelectionInstruction = ({message}) => (
+  <Segment inverted vertical clearing padded>
+    <ArtistHeader name={message}/>
+  </Segment>
+)
 
 export const LastLibraryUpdate = ({date, updateLibrary}) => {
   return (

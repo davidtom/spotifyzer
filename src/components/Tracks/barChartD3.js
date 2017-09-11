@@ -102,7 +102,7 @@ export default function renderChart({recentTracks}, handleClick){
     .style("background-color", "#626D71")
     .style("border-radius", "6px")
     .style("text-align", "left")
-    .style("width", "auto")
+    .style("width", "200px")
     .text("");
 
   // Append data to svg
@@ -115,7 +115,12 @@ export default function renderChart({recentTracks}, handleClick){
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.count); })
       .on("mouseover", function(d) {
-      tooltip.html(`Time: ${d.time}<br>
+      // Split time into date and hour
+      let timeArray=d.time.split(" ")
+      const date=timeArray.splice(0,4).join(" ")
+      const time=timeArray
+      tooltip.html(`Date: ${date}<br>
+                    Hour: ${time}<br>
                     ${d.count} tracks`);
         return tooltip.style("visibility", "visible");
       })
