@@ -32,6 +32,11 @@ class OverviewShow extends React.Component{
     }
   }
 
+  componentWillUnmount(){
+    // on dismount, clear the interval so its not running in the background
+    clearInterval(window.fetchOverviewInterval)
+  }
+
   updateLibrary = () => {
     const prompt = "Are you sure you want to update your library?"
     if (window.confirm(prompt)){

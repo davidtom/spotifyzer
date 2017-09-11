@@ -42,6 +42,11 @@ class GenresShow extends React.Component{
     }
   }
 
+  componentWillUnmount(){
+    // on dismount, clear the interval so its not running in the background
+    clearInterval(window.fetchGenreInterval)
+  }
+
   sectionTitle(){
     const genre = this.props.selection.genre
     return genre ? `${genre} Artists` : "Artists"

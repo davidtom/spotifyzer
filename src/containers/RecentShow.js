@@ -10,8 +10,15 @@ import {Grid} from 'semantic-ui-react'
 
 class RecentShow extends React.Component{
 
+  // TODO:
+  // Comment out d3 code
+  // Edit css - remove any unneeded selectors
+
   componentDidMount(){
     // Only fetch data from API if data does not already exist in store
+    // Else: Fix issue with chart not displaying when flipping between dashboard
+    // buttons by re-rendering it when the component mounts; on initial mount,
+    // data doesn't exist yet, so need to also leverage componentWillReceiveProps
     if(!this.props.recentTracks.length){
       this.props.fetchRecentTracks()
     } else {
@@ -19,12 +26,12 @@ class RecentShow extends React.Component{
     }
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   // Fix issue with d3 chart not having data to display on initial load
-  //   if (nextProps.genresList.length){
-  //     renderChart({genresList: nextProps.genresList, artistsTotal: nextProps.artistsTotal}, this.handleClick)
-  //   }
-  // }
+  componentWillReceiveProps(nextProps){
+    // Fix issue with d3 chart not having data to display on initial load
+    if (nextProps.recentTracks.length){
+      renderChart({recentTracks: nextProps.recentTracks})
+    }
+  }
 
   render(){
     return (
@@ -35,7 +42,7 @@ class RecentShow extends React.Component{
           <ContentLoader status={this.props.loading}/>
       </Grid.Column>
       <Grid.Column textAlign={"center"} width={6} floated={"right"}>
-        <SectionHeader title={'Artists'}/>
+        <SectionHeader title={'Tracks'}/>
 
       </Grid.Column>
       </Grid>
