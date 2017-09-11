@@ -3,7 +3,16 @@ import Track from './Track'
 import {Divider} from 'semantic-ui-react'
 
 const TracksList = ({ tracks }) => {
-  const renderTracks = tracks.map((track, i) =>
+
+  const renderTracks = tracks.map((track, i) => {
+
+    // If tracks are coming from recently played, they are nested one level
+    // deeper
+    if (track.played_at){
+      track = track.track
+    }
+
+    return (
     <div>
     <Track key={i}
             position = {i+1}
@@ -13,8 +22,9 @@ const TracksList = ({ tracks }) => {
             artists = {track.artists}
             album = {track.album}/>
     <Divider hidden fitted/>
-    </div>
-  );
+    </div>)
+  });
+
   return (
     <div>
       {renderTracks}

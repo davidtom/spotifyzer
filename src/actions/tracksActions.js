@@ -26,3 +26,7 @@ export function fetchRecentTracks(){
     )
   }
 }
+
+export function selectTime(data){
+  return {type: "SELECT_TIME", payload: data}
+}

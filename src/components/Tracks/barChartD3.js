@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-export default function renderChart({recentTracks}){
+export default function renderChart({recentTracks}, handleClick){
 
   // Main sources:
   // https://bl.ocks.org/mbostock/3885304
@@ -13,9 +13,16 @@ export default function renderChart({recentTracks}){
   const data = recentTracks
   const svgWidth = 800;
   const svgHeight = 417;
-  const columnForColors = "name";
-  const columnForRadius = "count";
   const selection = d3.select("#data-container")
+
+  // Remove any and all children of the div that will hold the chart
+  const containerNode = document.getElementById("data-container")
+
+  if (containerNode){
+    while (containerNode.firstChild) {
+      containerNode.removeChild(containerNode.firstChild);
+    }
+  }
 
   // Select div.data-container and append an svg of the specified dimensions
   var svg = selection
@@ -25,7 +32,7 @@ export default function renderChart({recentTracks}){
 
 
   // Set chart margins
-  var margin = {top: 20, right: 20, bottom: 30, left: 40},
+  var margin = {top: 20, right: 20, bottom: 70, left: 40},
       width = +svg.attr("width") - margin.left - margin.right,
       height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -47,13 +54,26 @@ export default function renderChart({recentTracks}){
   g.append("g")
     .attr("class", "axis axis--y")
     .call(d3.axisLeft(y).ticks())
-    // TODO: this should append an axis label I think
     // .append("text")
-    // .attr("transform", "rotate(-90)")
+    // .attr("transform", "rotate(90)")
     // .attr("y", 6)
-    // .attr("dy", "0.71em")
+    // .attr("dy", "1.5em")
     // .attr("text-anchor", "end")
-    // .text("Frequency");
+    // .text("Count");
+
+  // Create tooltips for each bar
+  var tooltip = selection
+    .data(data)
+    .append("div")
+    .style("position", "absolute")
+    .style("visibility", "hidden")
+    .style("color", "white")
+    .style("padding", "8px")
+    .style("background-color", "#626D71")
+    .style("border-radius", "6px")
+    .style("text-align", "left")
+    .style("width", "auto")
+    .text("");
 
   g.selectAll(".bar")
     .data(data)
@@ -62,5 +82,19 @@ export default function renderChart({recentTracks}){
       .attr("x", function(d) { return x(d.time); })
       .attr("y", function(d) { return y(d.count); })
       .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y(d.count); });
+      .attr("height", function(d) { return height - y(d.count); })
+      .on("mouseover", function(d) {
+      tooltip.html(`Time: ${d.time}<br>
+                    ${d.count} tracks`);
+        return tooltip.style("visibility", "visible");
+      })
+      .on("mousemove", function() {
+        return tooltip.style("top", (d3.event.pageY - 150) + "px").style("left", (d3.event.pageX - 75) + "px");
+      })
+      .on("mouseout", function() {
+        return tooltip.style("visibility", "hidden");
+      })
+      .on("click", function(d){
+        handleClick(d)
+      });
 }

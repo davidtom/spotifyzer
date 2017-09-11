@@ -13,7 +13,6 @@ export default function renderChart({genresList, artistsTotal}, handleClick){
   const selection = d3.select("#data-container")
 
   // Remove any and all children of the div that will hold the chart
-  // Necessary because this chart is created/appended in a component.render()
   const containerNode = document.getElementById("data-container")
 
   if (containerNode){
@@ -102,7 +101,7 @@ export default function renderChart({genresList, artistsTotal}, handleClick){
       return tooltip.style("visibility", "visible");
     })
     .on("mousemove", function() {
-      return tooltip.style("top", (d3.event.pageY - 150) + "px").style("left", (d3.event.pageX + 25) + "px");
+      return tooltip.style("top", (d3.event.pageY - 150) + "px").style("left", (d3.event.pageX - 75) + "px");
     })
     .on("mouseout", function() {
       d3.select(this).style("fill", function(d) { return colorCircles(d[columnForColors]) })

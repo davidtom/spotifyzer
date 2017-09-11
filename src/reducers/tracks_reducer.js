@@ -1,7 +1,11 @@
 export default (state={
   loading: false,
   topTracks:[],
-  recentTracks: []
+  recentTracks: [],
+  timeSelection: {
+    time: null,
+    tracks: []
+    }
   }, action) => {
   switch(action.type){
     case ("LOADING_TOP_TRACKS"):
@@ -17,6 +21,8 @@ export default (state={
       return Object.assign({}, state, {loading: false,
                                       recentTracks: action.payload.tracks,
                                       })
+    case ("SELECT_TIME"):
+      return Object.assign({}, state, {timeSelection: {time: action.payload.time, tracks: action.payload.tracks}})
     default:
       return state
   }

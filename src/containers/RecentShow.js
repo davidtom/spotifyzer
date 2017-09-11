@@ -1,7 +1,7 @@
 import React from "react";
 import {bindActionCreators} from "redux"
 import { connect } from 'react-redux';
-import {fetchRecentTracks} from "../actions/tracksActions"
+import {fetchRecentTracks, selectTime} from "../actions/tracksActions"
 import TracksList from '../components/Tracks/TracksList'
 import {SectionHeader} from '../components/PageAssets/Headers'
 import {ContentLoader} from '../components/PageAssets/Loaders'
@@ -11,8 +11,10 @@ import {Grid} from 'semantic-ui-react'
 class RecentShow extends React.Component{
 
   // TODO:
-  // Comment out d3 code
+  // Comment d3 code
   // Edit css - remove any unneeded selectors
+  // Give some other quick analyses below chart: songs/hour, songs/day, total time, total time listening to music?
+  // All of this data would have to be gathered on back end
 
   componentDidMount(){
     // Only fetch data from API if data does not already exist in store
@@ -22,14 +24,14 @@ class RecentShow extends React.Component{
     if(!this.props.recentTracks.length){
       this.props.fetchRecentTracks()
     } else {
-      renderChart({recentTracks: this.props.recentTracks})
+      renderChart({recentTracks: this.props.recentTracks}, this.props.selectTime)
     }
   }
 
   componentWillReceiveProps(nextProps){
     // Fix issue with d3 chart not having data to display on initial load
     if (nextProps.recentTracks.length){
-      renderChart({recentTracks: nextProps.recentTracks})
+      renderChart({recentTracks: nextProps.recentTracks}, this.props.selectTime)
     }
   }
 
@@ -43,7 +45,7 @@ class RecentShow extends React.Component{
       </Grid.Column>
       <Grid.Column textAlign={"center"} width={6} floated={"right"}>
         <SectionHeader title={'Tracks'}/>
-
+        <TracksList tracks={this.props.selection.tracks}/>
       </Grid.Column>
       </Grid>
     )
@@ -53,13 +55,15 @@ class RecentShow extends React.Component{
 const mapStateToProps = (state) => {
   return {
     loading: state.tracks.loading,
-    recentTracks: state.tracks.recentTracks
+    recentTracks: state.tracks.recentTracks,
+    selection: state.tracks.timeSelection
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchRecentTracks
+    fetchRecentTracks,
+    selectTime
   }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RecentShow)
