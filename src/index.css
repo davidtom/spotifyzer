@@ -10,10 +10,9 @@ body {
 
 /*<----- Site Components ------>*/
 
-.pusher {
-  height: 100% !important;
-  width: 100% !important;
-  background-color: inherit;
+/* Spotify Player Toggle Button*/
+.spotify-player-toggle {
+  background-color: rgb(13, 188, 61) !important;
 }
 
 /* Scroll setting for scrollable divs*/

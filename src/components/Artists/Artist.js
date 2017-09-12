@@ -1,9 +1,18 @@
 import React from 'react';
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import {selectItem} from "../../actions/playerActions"
 import {ArtistHeader, PositionHeader} from '../PageAssets/Headers'
 import {Segment, Grid, Image} from 'semantic-ui-react'
 
 
-const Artist = ({ position, name, spotifyUrl, imageUrl }) => {
+const Artist = ({ position, name, spotifyUrl, imageUrl, uri, selectItem }) => {
+
+  const handleClick = () => {
+    selectItem(uri)
+  }
+
+
   return (
     <Segment inverted vertical clearing padded>
       <Grid>
@@ -14,7 +23,7 @@ const Artist = ({ position, name, spotifyUrl, imageUrl }) => {
           </Grid.Column>
 
           <Grid.Column width={2}>
-            <Image spaced src={imageUrl} floated={"left"} width={"70"}/>
+            <Image spaced src={imageUrl} floated={"left"} width={"70"} onClick={handleClick}/>
           </Grid.Column>
 
           <Grid.Column width={12}>
@@ -29,5 +38,11 @@ const Artist = ({ position, name, spotifyUrl, imageUrl }) => {
   );
 };
 
-export default Artist;
-//
+// Connect to redux so clicking on an album can dispatch selectItem
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    selectItem
+  }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(Artist)

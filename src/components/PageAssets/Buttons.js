@@ -31,3 +31,6 @@ export const ProfileDropdown = ({user, handleClick}) => (
 export const DashboardButton = ({text, selected=false}) => {
   return <Button inverted size="huge" active={selected}>{text}</Button>
 }
+
+export const PlayerToggle = ({onClick}) => {
+  return <Button className="spotify-player-toggle" icon='spotify' floated="left" onClick={onClick}/>}

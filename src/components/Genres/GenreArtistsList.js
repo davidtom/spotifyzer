@@ -10,7 +10,8 @@ const GenreArtistsList = ({ artists }) => {
             position={i+1}
             name={artist.name}
             spotifyUrl={artist.spotify_url}
-            imageUrl={artist.image_url_small}/>
+            imageUrl={artist.image_url_small}
+            uri={artist.uri}/>
     <Divider hidden fitted/>
     </div>
   );

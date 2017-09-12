@@ -1,9 +1,13 @@
 export default (state={
-  selectedURI: null
+  uri: null,
+  visible: false
   }, action) => {
   switch(action.type){
     case ("SELECT_ITEM"):
-      return Object.assign({}, state, {selectedURI: action.payload.uri})
+      console.log("reducer: action", action)
+      return Object.assign({}, state, {uri: action.payload.uri})
+    case ("TOGGLE_VISIBILITY"):
+      return Object.assign({}, state, {visible: !state.visible})
     default:
       return state
   }

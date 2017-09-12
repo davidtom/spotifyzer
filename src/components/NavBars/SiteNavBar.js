@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-// Connect to redux logout button can dispatch an action to logout user
+// Connect to redux logout so button can dispatch an action to logout user
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     logoutUser

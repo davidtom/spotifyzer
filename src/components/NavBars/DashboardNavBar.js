@@ -1,12 +1,17 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import {DashboardButton} from '../PageAssets/Buttons'
+import {DashboardButton, PlayerToggle} from '../PageAssets/Buttons'
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import {toggleVisibility} from "../../actions/playerActions"
 import {Divider} from 'semantic-ui-react'
 
 
-const DashboardNavBar = ({mainUrl}) => {
+const DashboardNavBar = (props) => {
+  const mainUrl = props.mainUrl
   return (
     <div>
+      <PlayerToggle onClick={props.toggleVisibility}/>
       <NavLink to={`${mainUrl}overview`}><DashboardButton text={"Overview"}/></NavLink>
       <NavLink to={`${mainUrl}genres`}><DashboardButton text={"Genres"}/></NavLink>
       <NavLink to={`${mainUrl}artists`}><DashboardButton text={"Top Artists"}/></NavLink>
@@ -17,4 +22,11 @@ const DashboardNavBar = ({mainUrl}) => {
   );
 };
 
-export default DashboardNavBar
+// Connect to redux so PlayerToggle can update the state of the player
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    toggleVisibility
+  }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(DashboardNavBar)
