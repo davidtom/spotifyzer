@@ -1,11 +1,11 @@
 import React from 'react'
-import { PageHeader, ArtistHeader } from './Headers'
+import { SectionHeader, ArtistHeader } from './Headers'
 import { Segment, Message, Button, Icon } from 'semantic-ui-react'
 
 export const WelcomeMessage = (props) => {
     return (
       <Segment inverted vertical clearing padded>
-        <PageHeader title={"Select the buttons above to see information about your library"}/>
+        <SectionHeader title={"Select the buttons above to see information about your library."}/>
       </Segment>
     )
 }

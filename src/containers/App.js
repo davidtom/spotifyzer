@@ -7,6 +7,7 @@ import SiteNavBar from "../components/NavBars/SiteNavBar"
 import {currentUser} from "../actions/authActions"
 import AuthSwitch from '../auth/AuthSwitch'
 import DashboardPage from "./DashboardPage"
+import WelcomePage from "../components/Welcome/WelcomePage"
 import SpotifyPlayer from 'react-spotify-player';
 import {Grid, Sidebar, Segment} from 'semantic-ui-react'
 
@@ -46,7 +47,7 @@ class App extends React.Component {
 
                 <Route exact path="/authorized" component={AuthSwitch} />
                 <Route path="/" render={(props) => {
-                    return this.props.auth.isLoggedIn ? <DashboardPage {...props}/> : <Redirect to={'/'} />
+                    return this.props.auth.isLoggedIn ? <DashboardPage {...props}/> : <WelcomePage {...props}/>
                   }} />
 
               </Sidebar.Pusher>

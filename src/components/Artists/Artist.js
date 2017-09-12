@@ -26,7 +26,7 @@ const Artist = ({ position, name, spotifyUrl, imageUrl, uri, selectItem }) => {
           <Grid.Column width={2}>
             <Reveal animated='fade' instant onClick={handleClick}>
               <Reveal.Content visible>
-                <Image spaced src={imageUrl} floated={"left"} width={"70"} />
+                <Image spaced src={imageUrl} floated={"left"} width={"70"} verticalAlign="middle"/>
               </Reveal.Content>
               <Reveal.Content hidden>
                 <PlayButton />
