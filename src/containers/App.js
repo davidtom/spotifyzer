@@ -59,8 +59,6 @@ class App extends React.Component {
   }
 }
 
-// "spotify:artist:5INjqkS1o8h1imAzPqGZBb"
-
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,

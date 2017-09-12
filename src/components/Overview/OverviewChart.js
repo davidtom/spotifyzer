@@ -2,11 +2,6 @@ import React from 'react';
 import {Table} from 'semantic-ui-react'
 
 const OverviewChart = ({data}) => {
-  // TODO: make this more personal - its the user's data
-
-
-
-
 
   return (
     <Table celled padded collapsing inverted selectable color="black">

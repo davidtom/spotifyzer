@@ -11,8 +11,6 @@ import {Segment} from 'semantic-ui-react'
 
 class DashboardPage extends React.Component {
 
-
-
   render(){
     const match = this.props.match
     return (

@@ -1,5 +1,4 @@
 export default (state={
-  // loading: false,
   isLoggedIn: false,
   user: {
     username: null,

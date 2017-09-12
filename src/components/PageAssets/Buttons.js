@@ -1,9 +1,10 @@
 import React from 'react'
 import {ProfileImage} from './Images'
+import {ApiUrl} from './ApiUrl'
 import { Button, Dropdown, Icon } from 'semantic-ui-react'
 
 export const LoginButton = () => (
-  <Button size="large" icon="spotify" content="Login with Spotify" color="green" as="a" href="http://localhost:3000/api/v1/login"  className="log-in-out"/>
+  <Button size="large" icon="spotify" content="Login with Spotify" color="green" as="a" href={`${ApiUrl}login`}  className="log-in-out"/>
 )
 
 export const LogoutButton = ({handleClick}) => (

@@ -30,4 +30,3 @@ const Track = ({ position, name, spotifyUrl, imageUrl, artists, album}) => {
 };
 
 export default Track;
-//
