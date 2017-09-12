@@ -8,6 +8,7 @@ import {currentUser} from "../actions/authActions"
 import AuthSwitch from '../auth/AuthSwitch'
 import DashboardPage from "./DashboardPage"
 import WelcomePage from "../components/Welcome/WelcomePage"
+import {EmptyPlayerInstruction} from "../components/PageAssets/Messages"
 import SpotifyPlayer from 'react-spotify-player';
 import {Grid, Sidebar, Segment} from 'semantic-ui-react'
 
@@ -35,12 +36,16 @@ class App extends React.Component {
             <Sidebar.Pushable as={"div"}>
 
               <Sidebar as={Segment} animation='push' direction='left' visible={this.props.player.visible} inverted>
-                <SpotifyPlayer
+                {this.props.player.uri ?
+                  <SpotifyPlayer
                   uri={this.props.player.uri}
                   size={{width:'90%', height: "300"}}
                   view={'list'}
                   theme={'black'}
                   />
+                  :
+                  <EmptyPlayerInstruction/>
+                }
               </Sidebar>
 
               <Sidebar.Pusher as={"div"} className="pusher">

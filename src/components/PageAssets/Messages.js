@@ -16,6 +16,12 @@ export const EmptySelectionInstruction = ({message}) => (
   </Segment>
 )
 
+export const EmptyPlayerInstruction = () => (
+  <Segment inverted textAlign="center">
+    Click an artist or track image to play it on Spotify!
+  </Segment>
+)
+
 export const LastLibraryUpdate = ({date, updateLibrary}) => {
   return (
     <Segment className='library-update-message' compact inverted>
