@@ -21,7 +21,9 @@ export function fetchRecentTracks(){
     .then(resp => resp.json())
     .then(json => dispatch({
       type:"FETCH_RECENT_TRACKS",
-      payload: {tracks: json}
+      payload: {tracks: json.recent_tracks,
+                analysis: json.time_analysis
+                }
       })
     )
   }

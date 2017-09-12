@@ -3,6 +3,7 @@ import {bindActionCreators} from "redux"
 import { connect } from 'react-redux';
 import {fetchRecentTracks, selectTime} from "../actions/tracksActions"
 import TracksList from '../components/Tracks/TracksList'
+import RecentAnalysis from '../components/Tracks/RecentAnalysis'
 import {SectionHeader} from '../components/PageAssets/Headers'
 import {ContentLoader} from '../components/PageAssets/Loaders'
 import renderChart from '../components/Tracks/barChartD3'
@@ -37,6 +38,9 @@ class RecentShow extends React.Component{
           <SectionHeader title={"50 Most Recent Tracks"}/>
           <div id='data-container'/>
           <ContentLoader status={this.props.loading}/>
+          <RecentAnalysis hours={this.props.analysis.hours}
+                          minutes={this.props.analysis.minutes}
+                          perHour={this.props.analysis.perHour}/>
         </Grid.Column>
 
         <Grid.Column className="scrollable" textAlign="center" width={6} floated="right">
@@ -52,6 +56,7 @@ const mapStateToProps = (state) => {
   return {
     loading: state.tracks.loading,
     recentTracks: state.tracks.recentTracks,
+    analysis: state.tracks.recentTrackAnalysis,
     selection: state.tracks.timeSelection
   }
 }

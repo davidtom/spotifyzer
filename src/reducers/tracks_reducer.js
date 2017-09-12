@@ -2,6 +2,11 @@ export default (state={
   loading: false,
   topTracks:[],
   recentTracks: [],
+  recentTrackAnalysis: {
+    hours: null,
+    minutes: null,
+    perHour: null
+  },
   timeSelection: {
     time: null,
     tracks: []
@@ -17,8 +22,14 @@ export default (state={
     case ("LOADING_RECENT_TRACKS"):
       return Object.assign({}, state, {loading: true})
     case ("FETCH_RECENT_TRACKS"):
+      console.log(action)
       return Object.assign({}, state, {loading: false,
                                       recentTracks: action.payload.tracks,
+                                      recentTrackAnalysis: {
+                                        hours: action.payload.analysis.hours,
+                                        minutes: action.payload.analysis.minutes,
+                                        perHour: action.payload.analysis.per_hour
+                                      }
                                       })
     case ("SELECT_TIME"):
       return Object.assign({}, state, {timeSelection: {time: action.payload.time, tracks: action.payload.tracks}})
