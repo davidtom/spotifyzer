@@ -18,7 +18,7 @@ export const EmptySelectionInstruction = ({message}) => (
 
 export const EmptyPlayerInstruction = () => (
   <Segment inverted textAlign="center">
-    Click an artist or track image to play it on Spotify!
+    <h2>Click an artist or track image to play it on Spotify!</h2>
   </Segment>
 )
 
