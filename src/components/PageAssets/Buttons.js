@@ -1,6 +1,6 @@
 import React from 'react'
 import {ProfileImage} from './Images'
-import { Button, Dropdown } from 'semantic-ui-react'
+import { Button, Dropdown, Icon } from 'semantic-ui-react'
 
 export const LoginButton = () => (
   <Button size="large" icon="spotify" content="Login with Spotify" color="green" as="a" href="http://localhost:3000/api/v1/login"  className="log-in-out"/>
@@ -32,5 +32,19 @@ export const DashboardButton = ({text, selected=false}) => {
   return <Button inverted size="huge" active={selected}>{text}</Button>
 }
 
-export const PlayerToggle = ({onClick}) => {
-  return <Button className="spotify-player-toggle" icon='spotify' floated="left" onClick={onClick}/>}
+export const PlayerToggle = ({onClick, visible}) => {
+
+  return (
+    <Button
+      className="spotify-player-toggle"
+      floated="left"
+      onClick={onClick}
+      animated="vertical">
+      <Button.Content visible>
+        <Icon name="spotify" size="large"/>
+      </Button.Content>
+      <Button.Content hidden>
+        {visible ? <Icon name="chevron left" size="large"/> : <Icon name="chevron right" size="large"/>}
+      </Button.Content>
+    </Button>
+  )}

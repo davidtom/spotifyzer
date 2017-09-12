@@ -11,7 +11,7 @@ const DashboardNavBar = (props) => {
   const mainUrl = props.mainUrl
   return (
     <div>
-      <PlayerToggle onClick={props.toggleVisibility}/>
+      <PlayerToggle onClick={props.toggleVisibility} visible={props.visible}/>
       <NavLink to={`${mainUrl}overview`}><DashboardButton text={"Overview"}/></NavLink>
       <NavLink to={`${mainUrl}genres`}><DashboardButton text={"Genres"}/></NavLink>
       <NavLink to={`${mainUrl}artists`}><DashboardButton text={"Top Artists"}/></NavLink>
@@ -22,11 +22,17 @@ const DashboardNavBar = (props) => {
   );
 };
 
-// Connect to redux so PlayerToggle can update the state of the player
+// Connect to redux so PlayerToggle can update the state of toggle button and player
+const mapStateToProps = (state) => {
+  return {
+    visible: state.player.visible
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     toggleVisibility
   }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(DashboardNavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardNavBar)
