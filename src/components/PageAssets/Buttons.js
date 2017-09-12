@@ -4,7 +4,7 @@ import {ApiUrl} from './ApiUrl'
 import { Button, Dropdown, Icon } from 'semantic-ui-react'
 
 export const LoginButton = () => (
-  <Button size="large" icon="spotify" content="Login with Spotify" color="green" as="a" href={`${ApiUrl}login`}  className="log-in-out"/>
+  <Button id="login-button" size="large" icon="spotify" content="Login with Spotify" color="red" as="a" href={`${ApiUrl}login`}  className="log-in-out"/>
 )
 
 export const LogoutButton = ({handleClick}) => (

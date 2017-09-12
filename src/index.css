@@ -10,6 +10,11 @@ body {
 
 /*<----- Site Components ------>*/
 
+/* Login with Spotify Button*/
+#login-button {
+  background-color: rgb(13, 188, 61) !important;
+}
+
 /* Spotify Player Toggle Button*/
 .spotify-player-toggle {
   background-color: rgb(13, 188, 61) !important;
