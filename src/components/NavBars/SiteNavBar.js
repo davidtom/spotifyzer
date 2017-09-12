@@ -13,10 +13,12 @@ const SiteNavBar = (props) => {
   return (
     <Grid centered>
       <Grid.Row>
-        <Grid.Column width={11}>
+        <Grid.Column width={5}>
           < SiteLogo />
           <NavLink to={`${props.match.url}`}>< SiteHeader /></NavLink>
         </Grid.Column>
+        <Grid.Column width={5}>
+          </Grid.Column>
         <Grid.Column width={4} floated='right' verticalAlign='middle'>
           {props.auth.isLoggedIn ?
             < ProfileDropdown user={props.auth.user} handleClick={props.logoutUser} />
