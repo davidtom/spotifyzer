@@ -20,8 +20,9 @@ const TracksList = ({ tracks, recentTracks=false }) => {
             name={track.name}
             spotifyUrl={track.external_urls.spotify}
             imageUrl={track.album.images[2].url}
-            artists = {track.artists}
-            album = {track.album}/>
+            artists={track.artists}
+            album={track.album}
+            uri={track.uri}/>
     <Divider hidden fitted/>
     </div>)
   });
