@@ -42,10 +42,10 @@ export const PlayerToggle = ({onClick, visible}) => {
       onClick={onClick}
       animated="vertical">
       <Button.Content visible>
-        <Icon name="spotify" size="large"/>
+        {visible ? <Icon name="chevron left" size="large"/> : <Icon name="chevron right" size="large"/>}
       </Button.Content>
       <Button.Content hidden>
-        {visible ? <Icon name="chevron left" size="large"/> : <Icon name="chevron right" size="large"/>}
+        <Icon name="spotify" size="large"/>
       </Button.Content>
     </Button>
   )}
