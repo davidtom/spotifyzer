@@ -71,7 +71,7 @@ a, div {
   color: white !important;
 }
 
-/* Background image for welcome page */
+/* WelcomePage background image and text */
 #welcome-background-container{
   /* match div height to background image height. Taken from:
   https://stackoverflow.com/questions/600743/how-to-get-div-height-to-auto-adjust-to-background-size*/
@@ -83,10 +83,22 @@ a, div {
   padding-top: 66.666%; /* (img-height / img-width * container-width) */
                 /* (853 / 1280 * 100) */
                 /* my image: (3648 / 5472) * 100 = */
+  
 }
 
-#welcome-text {
-  z-index:9000 !important;
+.welcome-text {
+  position:absolute;
+  top: 5%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.welcome-text h1 {
+  font-size: 3em;
+}
+.welcome-text p {
+  font-size: 2em;
 }
 
 /*<----- Overview Page ------>*/
