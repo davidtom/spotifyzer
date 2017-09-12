@@ -18,29 +18,29 @@ const Artist = ({ position, name, spotifyUrl, imageUrl, uri, selectItem }) => {
     <Segment inverted vertical clearing padded>
       <Grid>
         <Grid.Row verticalAlign="middle">
+
           <Grid.Column width={2}>
             <PositionHeader position={position}/>
           </Grid.Column>
 
           <Grid.Column width={2}>
             <Reveal animated='fade' instant onClick={handleClick}>
-            <Reveal.Content visible>
-            <Image spaced src={imageUrl} floated={"left"} width={"70"} />
-            </Reveal.Content>
-            <Reveal.Content hidden>
-              <PlayButton />
-            </Reveal.Content>
+              <Reveal.Content visible>
+                <Image spaced src={imageUrl} floated={"left"} width={"70"} />
+              </Reveal.Content>
+              <Reveal.Content hidden>
+                <PlayButton />
+              </Reveal.Content>
             </Reveal>
           </Grid.Column>
 
           <Grid.Column width={12}>
             <ArtistHeader name={<a href={`${spotifyUrl}`} target="_blank">{name}</a>}/>
           </Grid.Column>
+
         </Grid.Row>
       </Grid>
     </Segment>
-
-
   );
 };
 

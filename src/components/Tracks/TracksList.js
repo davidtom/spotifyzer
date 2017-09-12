@@ -29,7 +29,8 @@ const TracksList = ({ tracks, recentTracks=false }) => {
 
   const renderListOrInstructions = function(){
     // NOTE: this is a bit messy, but DRY's up my components by removing need for
-    // two TrackLists (one for top tracks and one for recent tracks)
+    // two TrackLists (one for top tracks with no instructions and one for
+    // recent tracks with instructions (click graph to see tracks))
 
     // If there are no tracks to render...
     if (!renderTracks.length){
