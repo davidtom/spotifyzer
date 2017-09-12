@@ -8,3 +8,7 @@ export const SiteLogo = () => (
 export const ProfileImage = ({url}) => (
   <Image avatar src={url}/>
 )
+
+export const PlayButton = () => (
+  <Image spaced src='./PlayButtonWhite.png' floated={"left"} width={"70"}/>
+)
