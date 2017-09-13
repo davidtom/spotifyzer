@@ -22,7 +22,6 @@ export default (state={
     case ("LOADING_RECENT_TRACKS"):
       return Object.assign({}, state, {loading: true})
     case ("FETCH_RECENT_TRACKS"):
-      console.log(action)
       return Object.assign({}, state, {loading: false,
                                       recentTracks: action.payload.tracks,
                                       recentTrackAnalysis: {
