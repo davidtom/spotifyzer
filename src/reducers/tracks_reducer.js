@@ -1,6 +1,7 @@
 export default (state={
   loading: false,
   topTracks:[],
+  topTimeRange: 'medium_term',
   recentTracks: [],
   recentTrackAnalysis: {
     hours: null,
@@ -19,6 +20,8 @@ export default (state={
       return Object.assign({}, state, {loading: false,
                                       topTracks: action.payload.tracks,
                                       })
+    case ("UPDATE_TRACKS_TOP_TIME_RANGE"):
+      return Object.assign({}, state, {topTimeRange: action.payload})
     case ("LOADING_RECENT_TRACKS"):
       return Object.assign({}, state, {loading: true})
     case ("FETCH_RECENT_TRACKS"):

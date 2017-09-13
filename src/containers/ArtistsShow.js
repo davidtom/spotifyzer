@@ -1,13 +1,14 @@
 import React from "react";
 import {bindActionCreators} from "redux"
 import { connect } from 'react-redux';
-import {fetchTopArtists} from "../actions/artistsActions"
+import {fetchTopArtists, updateArtistsTopTimeRange} from "../actions/artistsActions"
 import ArtistsList from '../components/Artists/ArtistsList'
 import {ContentLoader} from '../components/PageAssets/Loaders'
 import {PageToolTip} from '../components/PageAssets/Messages'
+import {topTimeRangeDropDown} from '../components/PageAssets/Dropdowns'
 import {Container, Divider} from 'semantic-ui-react'
 
-const toolTip = "Your top 50 artists based on your listening behavior over the last six months."
+const toolTip = "Your top 50 artists based on your listening behavior over the past"
 
 class ArtistsShow extends React.Component{
 
@@ -19,7 +20,15 @@ class ArtistsShow extends React.Component{
   render(){
     return (
       <Container textAlign={"center"}>
-        <PageToolTip message={toolTip}/>
+        <PageToolTip message={toolTip}
+                      dropdown={
+                        topTimeRangeDropDown(
+                          {timeRange:this.props.timeRange,
+                          changeRangeCallback:this.props.updateArtistsTopTimeRange,
+                          fetchCallback:this.props.fetchTopArtists})
+
+                      }
+        />
         <Divider hidden/>
         <ContentLoader status={this.props.loading}/>
         <div className="scrollable">
@@ -33,13 +42,15 @@ class ArtistsShow extends React.Component{
 const mapStateToProps = (state) => {
   return {
     loading: state.artists.loading,
-    topArtists: state.artists.topArtists
+    topArtists: state.artists.topArtists,
+    timeRange: state.artists.topTimeRange
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchTopArtists
+    fetchTopArtists,
+    updateArtistsTopTimeRange
   }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistsShow)

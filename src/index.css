@@ -30,10 +30,11 @@ div.scrollable {
 
 .tooltip {
   margin: auto;
+  font-size: 1.5em;
 }
 
 /* Font size for page tool tips*/
-.tooltip p {
+.tooltip .tiptext {
   font-size: 1.5em;
 }
 

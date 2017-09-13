@@ -22,9 +22,9 @@ export const EmptyPlayerInstruction = () => (
   </Segment>
 )
 
-export const PageToolTip = ({message}) => (
+export const PageToolTip = ({message, dropdown}) => (
   <Segment className="tooltip" secondary inverted textAlign="center">
-    <p>{message}</p>
+    <div className="tiptext">{message}{dropdown}</div>
   </Segment>
 )
 
