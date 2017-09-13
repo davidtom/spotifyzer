@@ -107,7 +107,7 @@ export default function renderChart({recentTracks}, handleClick){
     .style("background-color", "#626D71")
     .style("border-radius", "6px")
     .style("text-align", "left")
-    .style("width", "200px")
+    .style("width", "150px")
     .text("");
 
   // Append data to svg
