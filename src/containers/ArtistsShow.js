@@ -7,8 +7,7 @@ import {ContentLoader} from '../components/PageAssets/Loaders'
 import {PageToolTip} from '../components/PageAssets/Messages'
 import {Container, Divider} from 'semantic-ui-react'
 
-const toolTip = "Your top 50 artists based on your listening behavior over the \
-last six months."
+const toolTip = "Your top 50 artists based on your listening behavior over the last six months."
 
 class ArtistsShow extends React.Component{
 

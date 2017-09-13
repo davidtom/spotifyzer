@@ -9,8 +9,7 @@ import renderChart from '../components/Genres/bubbleChartD3'
 import GenreArtistsList from '../components/Genres/GenreArtistsList'
 import {Grid} from 'semantic-ui-react'
 
-const toolTip = "Genres of all artists in your Spotify library (artists may have \
-  more than one genre). Artists in each genre are not shown in any particular order"
+const toolTip = "Genres of all artists in your Spotify library (artists may have more than one genre). Artists in each genre are not shown in any particular order"
 
 class GenresShow extends React.Component{
 

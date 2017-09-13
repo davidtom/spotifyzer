@@ -1,5 +1,4 @@
 import React from "react";
-import { PageHeader, SectionHeader } from '../PageAssets/Headers'
 import {Segment, Container} from 'semantic-ui-react'
 
 class WelcomePage extends React.Component{
