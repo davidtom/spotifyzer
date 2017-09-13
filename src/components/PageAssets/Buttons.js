@@ -29,8 +29,8 @@ export const ProfileDropdown = ({user, handleClick}) => (
   <Dropdown trigger={trigger(user)} options={options(user, handleClick)} icon={null}/>
 )
 
-export const DashboardButton = ({text, selected=false}) => {
-  return <Button inverted size="huge" active={selected}>{text}</Button>
+export const DashboardButton = ({text}) => {
+  return <Button inverted size="huge">{text}</Button>
 }
 
 export const PlayerToggle = ({onClick, visible}) => {
