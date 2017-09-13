@@ -3,17 +3,24 @@ import Artist from './Artist'
 import {Divider} from 'semantic-ui-react'
 
 const ArtistsList = ({ artists }) => {
-  const renderArtists = artists.map((artist, i) =>
+  const renderArtists = artists.map((artist, i) =>{
+
+    // Check to see if an artist has images before sending them to Artist component
+    const defaultImageUrl = 'https://i.imgur.com/6iOdzDu.png'
+    const imageUrl = artist.images[0] ? artist.images[0].url : defaultImageUrl
+
+    return (
     <div>
     <Artist key={i}
             position = {i+1}
             name={artist.name}
             spotifyUrl={artist.external_urls.spotify}
-            imageUrl={artist.images[2].url}
+            imageUrl={imageUrl}
             uri={artist.uri}/>
     <Divider hidden fitted/>
-    </div>
-  );
+    </div>)
+  });
+
   return (
     <div>
       {renderArtists}

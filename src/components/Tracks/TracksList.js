@@ -13,13 +13,17 @@ const TracksList = ({ tracks, recentTracks=false }) => {
       track = track.track
     }
 
+    // Check to see if a track has images before sending them to Track component
+    const defaultImageUrl = 'https://i.imgur.com/aONDH3M.png'
+    const imageUrl = track.album.images[0] ? track.album.images[0].url : defaultImageUrl
+
     return (
     <div>
     <Track key={i}
             position = {i+1}
             name={track.name}
             spotifyUrl={track.external_urls.spotify}
-            imageUrl={track.album.images[2].url}
+            imageUrl={imageUrl}
             artists={track.artists}
             album={track.album}
             uri={track.uri}/>
