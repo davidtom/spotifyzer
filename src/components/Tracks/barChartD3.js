@@ -130,7 +130,7 @@ export default function renderChart({recentTracks}, handleClick){
         return tooltip.style("visibility", "visible");
       })
       .on("mousemove", function() {
-        return tooltip.style("top", (d3.event.pageY - 300) + "px").style("left", (d3.event.pageX - 75) + "px");
+        return tooltip.style("top", (d3.event.pageY - 250) + "px").style("left", (d3.event.pageX - 75) + "px");
       })
       .on("mouseout", function() {
         return tooltip.style("visibility", "hidden");
