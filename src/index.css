@@ -28,6 +28,15 @@ div.scrollable {
   overflow-x: hidden;
 }
 
+.tooltip {
+  margin: auto;
+}
+
+/* Font size for page tool tips*/
+.tooltip p {
+  font-size: 1.5em;
+}
+
 /*<----- Site Nav Bar ------>*/
 
 /*'Spotifyzer' Site Header*/

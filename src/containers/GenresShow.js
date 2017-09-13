@@ -4,10 +4,13 @@ import { connect } from 'react-redux';
 import {fetchGenres, selectGenre} from "../actions/genresActions"
 import {SectionHeader} from '../components/PageAssets/Headers'
 import {ContentLoader, LibraryLoader} from '../components/PageAssets/Loaders'
+import {PageToolTip} from '../components/PageAssets/Messages'
 import renderChart from '../components/Genres/bubbleChartD3'
 import GenreArtistsList from '../components/Genres/GenreArtistsList'
-
 import {Grid} from 'semantic-ui-react'
+
+const toolTip = "Genres of all artists in your Spotify library (artists may have \
+  more than one genre). Artists in each genre are not shown in any particular order"
 
 class GenresShow extends React.Component{
 
@@ -54,17 +57,32 @@ class GenresShow extends React.Component{
 
   render(){
     return (
-      <Grid columns={2}>
-      <Grid.Column textAlign={"center"}>
-        <SectionHeader title={"Genres"}/>
-        <div id='data-container'/>
-          <ContentLoader status={this.props.loading && !this.props.loadingLibrary}/>
-          <LibraryLoader status={this.props.loadingLibrary}/>
-      </Grid.Column>
-      <Grid.Column className="scrollable" textAlign="center" width={6} floated="right">
-        <SectionHeader title={this.sectionTitle()}/>
-        <GenreArtistsList artists={this.props.selection.artists}/>
-      </Grid.Column>
+      <Grid verticalAlign="center">
+
+        <Grid.Row>
+          <Grid.Column width={14} >
+            <PageToolTip message={toolTip}/>
+          </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row>
+
+          <Grid.Column textAlign={"center"} width={8}>
+            <SectionHeader title={"Genres"}/>
+              <div id='data-container'/>
+              <ContentLoader status={this.props.loading && !this.props.loadingLibrary}/>
+              <LibraryLoader status={this.props.loadingLibrary}/>
+          </Grid.Column>
+
+          <Grid.Column textAlign="center" width={6} floated="right">
+            <SectionHeader title={this.sectionTitle()}/>
+              <div className="scrollable">
+                <GenreArtistsList artists={this.props.selection.artists}/>
+              </div>
+          </Grid.Column>
+
+        </Grid.Row>
+
       </Grid>
     )
   }

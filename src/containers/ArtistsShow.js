@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 import {fetchTopArtists} from "../actions/artistsActions"
 import ArtistsList from '../components/Artists/ArtistsList'
 import {ContentLoader} from '../components/PageAssets/Loaders'
+import {PageToolTip} from '../components/PageAssets/Messages'
 import {Container, Divider} from 'semantic-ui-react'
+
+const toolTip = "Your top 50 artists based on your listening behavior over the \
+last six months."
 
 class ArtistsShow extends React.Component{
 
@@ -15,10 +19,13 @@ class ArtistsShow extends React.Component{
 
   render(){
     return (
-      <Container className="scrollable" textAlign={"center"}>
+      <Container textAlign={"center"}>
+        <PageToolTip message={toolTip}/>
         <Divider hidden/>
         <ContentLoader status={this.props.loading}/>
-        <ArtistsList artists={this.props.topArtists}/>
+        <div className="scrollable">
+          <ArtistsList artists={this.props.topArtists}/>
+        </div>
       </Container>
     )
   }

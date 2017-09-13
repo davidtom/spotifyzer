@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import {fetchTopTracks} from "../actions/tracksActions"
 import TracksList from '../components/Tracks/TracksList'
 import {ContentLoader} from '../components/PageAssets/Loaders'
+import {PageToolTip} from '../components/PageAssets/Messages'
 import {Container, Divider} from 'semantic-ui-react'
+
+const toolTip = "Your top 50 tracks based on your listening behavior over the last six months."
 
 class TracksShow extends React.Component{
 
@@ -15,10 +18,13 @@ class TracksShow extends React.Component{
 
   render(){
     return (
-      <Container className="scrollable" textAlign={"center"}>
+      <Container textAlign={"center"}>
+        <PageToolTip message={toolTip}/>
         <Divider hidden/>
         <ContentLoader status={this.props.loading}/>
-        <TracksList tracks={this.props.topTracks}/>
+        <div className="scrollable">
+          <TracksList tracks={this.props.topTracks}/>
+        </div>
       </Container>
     )
   }

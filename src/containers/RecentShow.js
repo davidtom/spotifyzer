@@ -6,8 +6,13 @@ import TracksList from '../components/Tracks/TracksList'
 import RecentAnalysis from '../components/Tracks/RecentAnalysis'
 import {SectionHeader} from '../components/PageAssets/Headers'
 import {ContentLoader} from '../components/PageAssets/Loaders'
+import {PageToolTip} from '../components/PageAssets/Messages'
 import renderChart from '../components/Tracks/barChartD3'
 import {Grid} from 'semantic-ui-react'
+
+const toolTip = "Your 50 most recently played tracks. Tracks are not visible until \
+they are finished playing and a track must be played for more than 30 seconds to \
+be included. Tracks played in a “Private Session are not included."
 
 class RecentShow extends React.Component{
 
@@ -32,21 +37,34 @@ class RecentShow extends React.Component{
 
   render(){
     return (
-      <Grid columns={2}>
+      <Grid verticalAlign="center">
 
-        <Grid.Column textAlign="center" width={8}>
-          <SectionHeader title={"50 Most Recent Tracks"}/>
-          <div id='data-container'/>
-          <ContentLoader status={this.props.loading}/>
-          <RecentAnalysis hours={this.props.analysis.hours}
-                          minutes={this.props.analysis.minutes}
-                          perHour={this.props.analysis.perHour}/>
-        </Grid.Column>
+        <Grid.Row>
+          <Grid.Column width={14} >
+            <PageToolTip message={toolTip}/>
+          </Grid.Column>
+        </Grid.Row>
 
-        <Grid.Column className="scrollable" textAlign="center" width={6} floated="right">
-          <SectionHeader title={'Tracks'}/>
-          <TracksList tracks={this.props.selection.tracks} recentTracks={true}/>
-        </Grid.Column>
+        <Grid.Row>
+
+          <Grid.Column textAlign="center" width={8}>
+            <SectionHeader title={"50 Most Recent Tracks"}/>
+              <div id='data-container'/>
+              <ContentLoader status={this.props.loading}/>
+              <RecentAnalysis hours={this.props.analysis.hours}
+                            minutes={this.props.analysis.minutes}
+                            perHour={this.props.analysis.perHour}/>
+          </Grid.Column>
+
+          <Grid.Column textAlign="center" width={6} floated="right">
+            <SectionHeader title={'Tracks'}/>
+              <div className="scrollable">
+                <TracksList tracks={this.props.selection.tracks} recentTracks={true}/>
+              </div>
+            </Grid.Column>
+
+        </Grid.Row>
+        
       </Grid>
     )
   }

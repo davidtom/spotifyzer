@@ -22,6 +22,12 @@ export const EmptyPlayerInstruction = () => (
   </Segment>
 )
 
+export const PageToolTip = ({message}) => (
+  <Segment className="tooltip" secondary inverted textAlign="center">
+    <p>{message}</p>
+  </Segment>
+)
+
 export const LastLibraryUpdate = ({date, updateLibrary}) => {
   return (
     <Segment className='library-update-message' compact inverted>
