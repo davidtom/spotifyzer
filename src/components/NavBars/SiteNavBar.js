@@ -14,12 +14,12 @@ const SiteNavBar = (props) => {
     <Grid centered>
       <Grid.Row>
 
-        <Grid.Column width={5}>
+        <Grid.Column width={6}>
           < SiteLogo />
           <NavLink to={`${props.match.url}`}>< SiteHeader /></NavLink>
         </Grid.Column>
 
-        <Grid.Column width={5}>
+        <Grid.Column width={4}>
         </Grid.Column>
 
         <Grid.Column width={4} floated='right' verticalAlign='middle'>

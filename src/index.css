@@ -85,12 +85,12 @@ a, div {
 #welcome-background-container{
   /* match div height to background image height. Taken from:
   https://stackoverflow.com/questions/600743/how-to-get-div-height-to-auto-adjust-to-background-size*/
-  background-image: url('/spotifyzer_background.jpg');
+  background-image: url('/spotifyzer_background.png');
   background-size: contain;
   background-repeat: no-repeat;
   width: 100%;
   height: 0;
-  padding-top: 66.666%; /* (img-height / img-width * container-width) */
+  padding-top: 55.274889%; /* (img-height / img-width * container-width) */
                 /* (853 / 1280 * 100) */
                 /* my image: (3648 / 5472) * 100 = */
 
