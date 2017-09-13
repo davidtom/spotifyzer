@@ -35,7 +35,7 @@ class RecentShow extends React.Component{
 
   render(){
     return (
-      <Grid verticalAlign="center">
+      <Grid textAlign="center">
 
         <Grid.Row>
           <Grid.Column width={14} >
