@@ -62,6 +62,7 @@ class OverviewShow extends React.Component{
         {!this.props.loadingLibrary && <LastLibraryUpdate date={this.props.lastUpdate}
                             updateLibrary={this.updateLibrary}/>}
 
+        {/*Redirect user to main page to force refresh if/when they update library*/}
         {this.state.redirect && <Redirect to={'/'}/>}
       </Container>
     )
