@@ -51,7 +51,7 @@ class GenresShow extends React.Component{
 
   sectionTitle(){
     const genre = this.props.selection.genre
-    return genre ? `${genre} Artists*` : "Artists"
+    return genre ? `${genre} Artists` : "Artists"
   }
 
   render(){
@@ -68,7 +68,7 @@ class GenresShow extends React.Component{
           </Grid.Column>
 
           <Grid.Column textAlign="center" width={6} floated="right">
-            <SectionHeader title={this.sectionTitle()}/>
+            <SectionHeader title={`${this.sectionTitle()}*`}/>
               <div className="scrollable">
                 <GenreArtistsList artists={this.props.selection.artists}/>
               </div>
