@@ -54,7 +54,7 @@ export default function renderChart({recentTracks}, handleClick){
     // Split dateString into pieces so that desired pieces can be pulled out
     const splitDate = dateString.split(" ")
     // Format time to only display hour (HH:00)
-    const hour = splitDate[4].split(":")[0] + ":00"
+    const hour = parseInt(splitDate[4].split(":")[0], 10) + ":00"
     // Join date into following format: MMM DD HH:00
     const formattedDate = [splitDate[1], splitDate[2], hour].join(" ")
     return formattedDate
@@ -108,6 +108,7 @@ export default function renderChart({recentTracks}, handleClick){
     .style("border-radius", "6px")
     .style("text-align", "left")
     .style("width", "150px")
+    .style("z-index", "9001") //ITS OVER 9000!
     .text("");
 
   // Append data to svg
@@ -121,16 +122,19 @@ export default function renderChart({recentTracks}, handleClick){
       .attr("height", function(d) { return height - y(d.count); })
       .on("mouseover", function(d) {
       // Split time into date and hour
-      let timeArray=d.time.split(" ")
-      const date=timeArray.splice(0,2).join(" ")
-      const time=timeArray
+      let timeArray = d.time.split(" ")
+      const date = timeArray.splice(0,2).join(" ")
+      // Get the hour from time, and the following hour, so that tooltip can be
+      // formatted as: 8:00-9:00
+      const time = timeArray[0]
+      const nextTime = parseInt(time.split(":")[0], 10)+1 + ":00"
       tooltip.html(`Date: ${date}<br>
-                    Hour: ${time}<br>
+                    Time: ${time}-${nextTime}<br>
                     Tracks played: ${d.count}`);
         return tooltip.style("visibility", "visible");
       })
       .on("mousemove", function() {
-        return tooltip.style("top", (d3.event.pageY - 250) + "px").style("left", (d3.event.pageX - 75) + "px");
+        return tooltip.style("top", (d3.event.pageY-250) + "px").style("left", (d3.event.pageX) + "px");
       })
       .on("mouseout", function() {
         return tooltip.style("visibility", "hidden");

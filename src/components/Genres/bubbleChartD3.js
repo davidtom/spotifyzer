@@ -45,8 +45,8 @@ export default function renderChart({genresList, artistsTotal}, handleClick){
   // Give Circles X and Y positions:
   // Simulate physics of the circles when they are created
   // Positive strength causes nodes (data) to attract; negative repels
-  const simulation = d3.forceSimulation(data)
-    .force("charge", d3.forceManyBody().strength([-40]))
+  d3.forceSimulation(data)
+    .force("charge", d3.forceManyBody().strength([-50]))
     .force("x", d3.forceX()) // drags the circles towards the 0 position
     .force("y", d3.forceY()) // drags the circles towards the 0 position
     .on("tick", ticked);
@@ -102,7 +102,7 @@ export default function renderChart({genresList, artistsTotal}, handleClick){
       return tooltip.style("visibility", "visible");
     })
     .on("mousemove", function() {
-      return tooltip.style("top", (d3.event.pageY - 250) + "px").style("left", (d3.event.pageX - 75) + "px");
+      return tooltip.style("top", (d3.event.pageY - 250) + "px").style("left", (d3.event.pageX) + "px");
     })
     .on("mouseout", function() {
       d3.select(this).style("fill", function(d) { return colorCircles(d[columnForColors]) })

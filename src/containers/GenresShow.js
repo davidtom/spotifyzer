@@ -9,7 +9,7 @@ import renderChart from '../components/Genres/bubbleChartD3'
 import GenreArtistsList from '../components/Genres/GenreArtistsList'
 import {Grid} from 'semantic-ui-react'
 
-const toolTip = "Genres of all artists in your Spotify library (artists may have more than one genre). Artists in each genre are not shown in any particular order"
+const toolTip = "*Artists in each genre are not shown in any particular order"
 
 class GenresShow extends React.Component{
 
@@ -51,7 +51,7 @@ class GenresShow extends React.Component{
 
   sectionTitle(){
     const genre = this.props.selection.genre
-    return genre ? `${genre} Artists` : "Artists"
+    return genre ? `${genre} Artists*` : "Artists"
   }
 
   render(){
@@ -59,14 +59,8 @@ class GenresShow extends React.Component{
       <Grid textAlign="center">
 
         <Grid.Row>
-          <Grid.Column width={14} >
-            <PageToolTip message={toolTip}/>
-          </Grid.Column>
-        </Grid.Row>
 
-        <Grid.Row>
-
-          <Grid.Column textAlign={"center"} width={8}>
+          <Grid.Column verticalAlign={"middle"} width={8}>
             <SectionHeader title={"Genres"}/>
               <div id='data-container'/>
               <ContentLoader status={this.props.loading && !this.props.loadingLibrary}/>
@@ -80,6 +74,12 @@ class GenresShow extends React.Component{
               </div>
           </Grid.Column>
 
+        </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column width={10} >
+            <PageToolTip message={toolTip}/>
+          </Grid.Column>
         </Grid.Row>
 
       </Grid>
