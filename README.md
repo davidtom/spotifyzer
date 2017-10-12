@@ -2,6 +2,7 @@
 * Analyze a Spotify user's library and listening habits
 * View live site [here](http://www.spotifyzer.com/) (please be patient while Heroku wakes up)
 * Relies on a Rails API back end ([repo](https://github.com/davidtom/spotifyzer-api))
+* [Video demo](https://www.youtube.com/watch?v=6HGACQsPdjM&feature=youtu.be)
 
 ## Features
 * Authorizes users through [Spotify's Web API Authorization](https://developer.spotify.com/web-api/authorization-guide/) to access a user's saved tracks
