@@ -1,6 +1,6 @@
 # Spotifyzer
 * Analyze a Spotify user's library and listening habits
-* View live site [here](http://www.spotifyzer.com/) (please be patient while Heroku wakes up)
+* View live site [here](https://spotifyzer-fe.herokuapp.com/) (please be patient while Heroku wakes up)
 * Relies on a Rails API back end ([repo](https://github.com/davidtom/spotifyzer-api))
 * [Video demo](https://www.youtube.com/watch?v=6HGACQsPdjM&feature=youtu.be)
 
